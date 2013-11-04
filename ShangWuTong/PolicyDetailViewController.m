@@ -70,7 +70,7 @@
         [scrollView addSubview:imageView];
         [imageView release];
         _x += 320;
-        
+    
     }
     
     [self.view addSubview:scrollView];
