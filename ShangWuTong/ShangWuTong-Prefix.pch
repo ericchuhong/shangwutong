@@ -1,0 +1,31 @@
+//
+// Prefix header for all source files of the 'ShangWuTong' target in the 'ShangWuTong' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "UIViewExt.h"
+#endif
+
+//获取设备物理高度
+#define KDeviceHeight [UIScreen mainScreen].bounds.size.height
+
+//获取设备物理宽度
+#define kDeviceWidth [UIScreen mainScreen].bounds.size.width
+
+#define UserNick          @"UerNick"
+#define UserKey           @"UserKey"
+#define Password          @"Password"
+#define Goods_isSavePassword @"Goods_isSavePassword"
+
+#define Phone             @"Phone"
+#define GroupNumKey      @"GroupNumKey"
+#define PhonePassword     @"PhonePassword"
+#define Phone_isSavePassword @"Phone_isSavePassword"
