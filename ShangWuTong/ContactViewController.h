@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ASIHTTPRequest.h"
 
-@interface ContactViewController : UIViewController
+@interface ContactViewController : UIViewController<UITextFieldDelegate>
 
 @property (nonatomic, strong) NSString *groupNumKey;
 @property (nonatomic, strong) __block ASIHTTPRequest    *request;

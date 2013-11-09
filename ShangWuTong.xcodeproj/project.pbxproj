@@ -11,6 +11,11 @@
 		040034AD1816BCD800DD05C1 /* PolicyDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040034AB1816BCD800DD05C1 /* PolicyDetailViewController.xib */; };
 		0400F9A418179023009322AC /* GoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0400F9A218179023009322AC /* GoodsDetailViewController.m */; };
 		0400F9A518179023009322AC /* GoodsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0400F9A318179023009322AC /* GoodsDetailViewController.xib */; };
+		0401E5EA182E19B0003779E4 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E5E1182E19B0003779E4 /* FMDatabase.m */; };
+		0401E5EB182E19B0003779E4 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E5E3182E19B0003779E4 /* FMDatabaseAdditions.m */; };
+		0401E5EC182E19B0003779E4 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E5E5182E19B0003779E4 /* FMDatabasePool.m */; };
+		0401E5ED182E19B0003779E4 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E5E7182E19B0003779E4 /* FMDatabaseQueue.m */; };
+		0401E5EE182E19B0003779E4 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E5E9182E19B0003779E4 /* FMResultSet.m */; };
 		042CD2AD17D2DEB100F8D40B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042CD2AB17D2DEB100F8D40B /* DetailViewController.m */; };
 		042CD2AE17D2DEB100F8D40B /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042CD2AC17D2DEB100F8D40B /* DetailViewController.xib */; };
 		043A2A861803BFDB00C342E7 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043A2A841803BFDB00C342E7 /* ContactViewController.m */; };
@@ -125,6 +130,17 @@
 		0400F9A118179023009322AC /* GoodsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailViewController.h; sourceTree = "<group>"; };
 		0400F9A218179023009322AC /* GoodsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailViewController.m; sourceTree = "<group>"; };
 		0400F9A318179023009322AC /* GoodsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsDetailViewController.xib; sourceTree = "<group>"; };
+		0401E5DE182E19B0003779E4 /* fmdb_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fmdb_Prefix.pch; sourceTree = "<group>"; };
+		0401E5E0182E19B0003779E4 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		0401E5E1182E19B0003779E4 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		0401E5E2182E19B0003779E4 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		0401E5E3182E19B0003779E4 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		0401E5E4182E19B0003779E4 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		0401E5E5182E19B0003779E4 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		0401E5E6182E19B0003779E4 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		0401E5E7182E19B0003779E4 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		0401E5E8182E19B0003779E4 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		0401E5E9182E19B0003779E4 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		042CD2AA17D2DEB100F8D40B /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		042CD2AB17D2DEB100F8D40B /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		042CD2AC17D2DEB100F8D40B /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
@@ -307,6 +323,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0401E5DD182E19B0003779E4 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				0401E5DE182E19B0003779E4 /* fmdb_Prefix.pch */,
+				0401E5DF182E19B0003779E4 /* src */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
+		0401E5DF182E19B0003779E4 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0401E5E0182E19B0003779E4 /* FMDatabase.h */,
+				0401E5E1182E19B0003779E4 /* FMDatabase.m */,
+				0401E5E2182E19B0003779E4 /* FMDatabaseAdditions.h */,
+				0401E5E3182E19B0003779E4 /* FMDatabaseAdditions.m */,
+				0401E5E4182E19B0003779E4 /* FMDatabasePool.h */,
+				0401E5E5182E19B0003779E4 /* FMDatabasePool.m */,
+				0401E5E6182E19B0003779E4 /* FMDatabaseQueue.h */,
+				0401E5E7182E19B0003779E4 /* FMDatabaseQueue.m */,
+				0401E5E8182E19B0003779E4 /* FMResultSet.h */,
+				0401E5E9182E19B0003779E4 /* FMResultSet.m */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		042CD2A817D2DE1B00F8D40B /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,6 +709,7 @@
 		04F96B0017E6EC1800338BF9 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				0401E5DD182E19B0003779E4 /* fmdb */,
 				04E67AE31808D98600F3C0B9 /* SDWebImage */,
 				04E2F016180051E60023ED4B /* asihttprequest */,
 				04F96B1C17E6EC3800338BF9 /* utility工具 */,
@@ -811,6 +854,7 @@
 				04ED610317CE1B8300A51822 /* main.m in Sources */,
 				04ED610717CE1B8300A51822 /* AppDelegate.m in Sources */,
 				04F8AE5A17CE2654004E9E83 /* BaseViewController.m in Sources */,
+				0401E5EA182E19B0003779E4 /* FMDatabase.m in Sources */,
 				04F8AE5D17CE26CC004E9E83 /* BaseNavigationViewController.m in Sources */,
 				04F8AE6417CE28A0004E9E83 /* HomeViewController.m in Sources */,
 				04F8AE6917CE2A11004E9E83 /* PolicyViewController.m in Sources */,
@@ -823,6 +867,7 @@
 				04E48E8317E6C89D00D68807 /* BusinessRegisterViewController.m in Sources */,
 				04E48E8917E6C8FA00D68807 /* BussinessLoginViewController.m in Sources */,
 				04F96AF517E6E72E00338BF9 /* GoodsCell.m in Sources */,
+				0401E5EC182E19B0003779E4 /* FMDatabasePool.m in Sources */,
 				04F96AF917E6E83A00338BF9 /* ShangWuTongNetworkService.m in Sources */,
 				04F96AFF17E6E8C300338BF9 /* GoodsModel.m in Sources */,
 				04F96B2B17E6EC3800338BF9 /* UIViewExt.m in Sources */,
@@ -836,16 +881,19 @@
 				04E2F03C180051E70023ED4B /* ASINetworkQueue.m in Sources */,
 				04E2F040180051E70023ED4B /* Reachability.m in Sources */,
 				04EDAF51180307C5000B252A /* ContacetsViewController.m in Sources */,
+				0401E5EE182E19B0003779E4 /* FMResultSet.m in Sources */,
 				04EDAF53180307C5000B252A /* ContactsCell.m in Sources */,
 				043A2A861803BFDB00C342E7 /* ContactViewController.m in Sources */,
 				043A2A8B1803C27A00C342E7 /* ContactsModel.m in Sources */,
 				04E67AF81808D98600F3C0B9 /* MKAnnotationView+WebCache.m in Sources */,
+				0401E5EB182E19B0003779E4 /* FMDatabaseAdditions.m in Sources */,
 				04E67AF91808D98600F3C0B9 /* SDImageCache.m in Sources */,
 				04E67AFA1808D98600F3C0B9 /* SDWebImageDecoder.m in Sources */,
 				04E67AFB1808D98600F3C0B9 /* SDWebImageDownloader.m in Sources */,
 				04E67AFC1808D98600F3C0B9 /* SDWebImageManager.m in Sources */,
 				04E67AFD1808D98600F3C0B9 /* SDWebImagePrefetcher.m in Sources */,
 				04E67AFE1808D98600F3C0B9 /* UIButton+WebCache.m in Sources */,
+				0401E5ED182E19B0003779E4 /* FMDatabaseQueue.m in Sources */,
 				04E67AFF1808D98600F3C0B9 /* UIImageView+WebCache.m in Sources */,
 				04EAA64E180991F200EBC307 /* GoodsBaseTableView.m in Sources */,
 				04F09498180CC7FD0078D753 /* PolicyCell.m in Sources */,

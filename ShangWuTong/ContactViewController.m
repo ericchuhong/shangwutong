@@ -29,6 +29,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.NumberTextField.delegate = self;
+    self.PassWordTextField.delegate = self;
     [self.passwdSwitch addTarget:self action:@selector(passwdSwitchPressed) forControlEvents:UIControlEventValueChanged];
     BOOL switchStatus = [ContactsModel isSavePassword];
     [self.passwdSwitch setOn:switchStatus];
@@ -157,6 +159,13 @@
         NSLog(@"Failed %d",[self.request responseStatusCode]);
     }];
     [self.request startAsynchronous];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [NumberTextField resignFirstResponder];
+    [PassWordTextField resignFirstResponder];
+    return YES;
 }
 
 @end

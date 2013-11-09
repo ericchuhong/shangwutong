@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ASIHTTPRequest.h"
+#import "FMDatabase.h"
+
 
 @interface ContacetsViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 {
@@ -17,8 +19,11 @@
 @property (nonatomic,strong) NSMutableArray *contactsArray;
 @property (nonatomic,strong) NSMutableArray *showContacts;
 @property (nonatomic,strong) __block ASIHTTPRequest *request;
+@property (nonatomic,strong) __block ASIHTTPRequest *researchRequest;
 @property (nonatomic,strong) NSMutableDictionary *contactsDict;
 @property (nonatomic,strong) NSMutableDictionary *searchContactsDic;
+@property (nonatomic,strong) FMDatabase *db;
+
 
 @property (nonatomic,retain) IBOutlet UISearchBar *searchBar;
 
