@@ -30,23 +30,23 @@
     [self.contentView addSubview:_backgroundImg];
     
     _companyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _companyLabel.backgroundColor = [UIColor blackColor];
+    _companyLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_companyLabel];
     
     _departmentLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _departmentLabel.backgroundColor = [UIColor yellowColor];
+    _departmentLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_departmentLabel];
     
     _salerNameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _salerNameLabel.backgroundColor = [UIColor greenColor];
+    _salerNameLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_salerNameLabel];
     
     _telLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _telLabel.backgroundColor = [UIColor redColor];
+    _telLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_telLabel];
     
     _phoneBtn = [[UIButton alloc] initWithFrame:CGRectZero];
-    _phoneBtn.backgroundColor = [UIColor cyanColor];
+    _phoneBtn.backgroundColor = [UIColor clearColor];
     
     [self.contentView addSubview:_phoneBtn];    
     
@@ -71,9 +71,9 @@
     
     _telLabel.frame = CGRectMake(_companyLabel.left, _salerNameLabel.top+20, LABEL_WIDTH, LABEL_HEIGHT);
     
-    _phoneBtn.frame = CGRectMake(_companyLabel.right, _companyLabel.bottom, 40, 60);
+    _phoneBtn.frame = CGRectMake(_companyLabel.right, _companyLabel.top+2.5, 80 , 80);
     
-    [_phoneBtn setImage:[UIImage imageNamed:@"1"] forState:UIControlStateNormal];
+    [_phoneBtn setImage:[UIImage imageNamed:@"call"] forState:UIControlStateNormal];
 
 }
 

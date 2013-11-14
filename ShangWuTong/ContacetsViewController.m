@@ -163,8 +163,17 @@
                 ContactsCell *contact = [[ContactsCell alloc] init];
                 contact.companyLabel = [item objectForKey:@"companyName"];
                 contact.departmentLabel = [item objectForKey:@"department"];
-                contact.salerNameLabel = [item objectForKey:@"companyName"];
+                contact.salerNameLabel = [item objectForKey:@"name"];
                 contact.telLabel = [item objectForKey:@"phone"];
+                
+                [self.contactsArray addObject:contact];
+                
+                NSString* sql = [[NSString alloc] initWithFormat:@"insert or replace into circles values('%@', '%@', '%@', '%@')", contact.companyLabel,contact.departmentLabel,contact.salerNameLabel, contact.telLabel];
+                BOOL retCode = [self.db executeUpdate:sql];
+                if (retCode == NO)
+                {
+                    NSLog(@"%s line:%d error, msg = %@", __FUNCTION__, __LINE__, [self.db lastError]);
+                }
             }
             
             self.showContacts = [[NSMutableArray alloc] initWithArray:self.contactsArray];
@@ -219,8 +228,11 @@
         cell.telLabel.text = [NSString stringWithFormat:@"电话:%@",[self.showContacts[indexPath.row] objectForKey:@"phone"]];
         cell.telLabel.textColor = [UIColor blackColor];
         
+        cell.salerNameLabel.text = [NSString stringWithFormat:@"姓名:%@",[self.showContacts[indexPath.row] objectForKey:@"name"]];
+        cell.salerNameLabel.textColor = [UIColor blackColor];
+        
         cell.departmentLabel.text = [NSString stringWithFormat:@"部门:%@",[self.showContacts[indexPath.row] objectForKey:@"department"]];
-        cell.telLabel.textColor = [UIColor blackColor];
+        cell.departmentLabel.textColor = [UIColor blackColor];
         
         [cell.phoneBtn addTarget:self action:@selector(callThePhone: event:) forControlEvents:UIControlEventTouchUpInside];
     }

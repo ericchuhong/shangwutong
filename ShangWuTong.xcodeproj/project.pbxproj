@@ -99,6 +99,7 @@
 		04F1221017D24BCB0028507F /* select.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F1220717D24BCA0028507F /* select.png */; };
 		04F1221117D24BCB0028507F /* Strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F1220817D24BCA0028507F /* Strawberry.png */; };
 		04F1221217D24BCB0028507F /* tabBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F1220917D24BCA0028507F /* tabBar.png */; };
+		04F1D6621833ADFC00E52793 /* call.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F1D6611833ADFC00E52793 /* call.png */; };
 		04F1FFFE180297F800E27D07 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F1FFFD180297F800E27D07 /* MobileCoreServices.framework */; };
 		04F8AE5A17CE2654004E9E83 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F8AE5917CE2654004E9E83 /* BaseViewController.m */; };
 		04F8AE5D17CE26CC004E9E83 /* BaseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F8AE5C17CE26CC004E9E83 /* BaseNavigationViewController.m */; };
@@ -267,6 +268,7 @@
 		04F1220717D24BCA0028507F /* select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = select.png; path = "示例图片/select.png"; sourceTree = "<group>"; };
 		04F1220817D24BCA0028507F /* Strawberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Strawberry.png; path = "示例图片/Strawberry.png"; sourceTree = "<group>"; };
 		04F1220917D24BCA0028507F /* tabBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tabBar.png; path = "示例图片/tabBar.png"; sourceTree = "<group>"; };
+		04F1D6611833ADFC00E52793 /* call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = call.png; sourceTree = "<group>"; };
 		04F1FFFD180297F800E27D07 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		04F8AE5817CE2654004E9E83 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		04F8AE5917CE2654004E9E83 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 		0444EA1517D239E4000A3E98 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				04F1D6611833ADFC00E52793 /* call.png */,
 				04FE4309181D768F0070EB2A /* Head.png */,
 				04FE42FB181D72AD0070EB2A /* aboutUs.jpg */,
 				04FE42FC181D72AD0070EB2A /* Default_failLoad.jpg */,
@@ -808,6 +811,7 @@
 				04EFE27617D981EB00DFE812 /* segment_left_item.png in Resources */,
 				04EFE27717D981EB00DFE812 /* segment_left_item@2x.png in Resources */,
 				04EFE27817D981EB00DFE812 /* segment_left_tag.png in Resources */,
+				04F1D6621833ADFC00E52793 /* call.png in Resources */,
 				04EFE27917D981EB00DFE812 /* segment_left_tag@2x.png in Resources */,
 				04EFE27A17D981EB00DFE812 /* segment_middle_item.png in Resources */,
 				04EFE27B17D981EB00DFE812 /* segment_middle_item@2x.png in Resources */,
