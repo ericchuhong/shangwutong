@@ -16,6 +16,8 @@
 
 @interface ContacetsViewController ()
 
+- (void)databaseSearchWithText:(NSString *)searchText;
+
 @end
 
 @implementation ContacetsViewController
@@ -67,10 +69,10 @@
    //创建表
     NSString* sql =
     @"CREATE TABLE IF NOT EXISTS contacts("
-    "company TEXT," //对应 FCircle_name
-    "department TEXT," //对应 FCircle_PinYin
-    "salerName TEXT," //对应 FCircle_ParentID
-    "tel TEXT,"
+    "company TEXT,"     //对应 company
+    "department TEXT,"  //对应 department
+    "salerName TEXT,"   //对应 salerName
+    "tel TEXT,"         //对应 tel
     ");";
     
     if (![self.db executeUpdate:sql]) {
@@ -100,32 +102,6 @@
     [aLock unlock];
     return self.db;
 }
-
-//NSArray* items = [json objectForKey:@"items"];
-//for (NSDictionary* itemJson in items) {
-//    Circle* circle = [[Circle alloc] init];
-//    circle.ID = [itemJson objectForKey:@"FCircle_ID"];
-//    circle.cityID = [itemJson objectForKey:@"FC_ID"];
-//    circle.name = [itemJson objectForKey:@"FCircle_Name"];
-//    circle.parentID = [itemJson objectForKey:@"FCircle_ParentID"];
-//    circle.pinYin = [itemJson objectForKey:@"FCircle_PinYin"];
-//
-//
-//    if ([circle.parentID intValue] != 0) {
-//        //二级商圈
-//        [_subDistricts addObject:circle];
-//    } else {
-//        //顶级商圈
-//        [_parentDistricts addObject:circle];
-//    }
-//
-//    NSString* sql = [[NSString alloc] initWithFormat:@"insert or replace into circles values(%@, %@, '%@', '%@', %@)", circle.ID, circle.cityID, circle.name, circle.pinYin, circle.parentID];
-//    //NSLog(@"%s line:%d sql = %@", __FUNCTION__, __LINE__, sql);
-//    BOOL retCode = [self.dbConn executeUpdate:sql];
-//    if (retCode == NO) {
-//        NSLog(@"%s line:%d error, msg = %@", __FUNCTION__, __LINE__, [self.dbConn lastError]);
-//    }
-//}
 
 - (void)loadContactDatawithURL:(NSString *)url
 {
@@ -157,9 +133,9 @@
             [alert show];
         }else {
             self.contactsArray = [NSMutableArray arrayWithArray:[self.contactsDict objectForKey:@"groupNum"]];
-//            self.showContacts = [self.contactsArray mutableCopy];
+            self.showContacts = [self.contactsArray mutableCopy];
             
-            for (NSDictionary *item in self.contactsArray) {
+            for (NSMutableDictionary *item in self.contactsArray) {
                 ContactsCell *contact = [[ContactsCell alloc] init];
                 contact.companyLabel = [item objectForKey:@"companyName"];
                 contact.departmentLabel = [item objectForKey:@"department"];
@@ -168,13 +144,15 @@
                 
                 [self.contactsArray addObject:contact];
                 
-                NSString* sql = [[NSString alloc] initWithFormat:@"insert or replace into circles values('%@', '%@', '%@', '%@')", contact.companyLabel,contact.departmentLabel,contact.salerNameLabel, contact.telLabel];
+                NSString* sql = [[NSString alloc] initWithFormat:@"insert or replace into contacts values('%@', '%@', '%@', '%@')", contact.companyLabel,contact.departmentLabel,contact.salerNameLabel, contact.telLabel];
                 BOOL retCode = [self.db executeUpdate:sql];
                 if (retCode == NO)
                 {
                     NSLog(@"%s line:%d error, msg = %@", __FUNCTION__, __LINE__, [self.db lastError]);
                 }
             }
+            
+            NSLog(@"%@",self.contactsArray);
             
             self.showContacts = [[NSMutableArray alloc] initWithArray:self.contactsArray];
         
@@ -187,7 +165,7 @@
     }];
     [self.request startAsynchronous];
     
-}
+ }
 
 - (void)didReceiveMemoryWarning
 {
@@ -209,7 +187,7 @@
     static NSString *CellIdentifier = @"Cell";
     ContactsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[ContactsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[ContactsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
@@ -288,7 +266,7 @@
     searchBarButtonClick = YES;
     [searchBar resignFirstResponder];
     NSLog(@"%i",[self.showContacts count]);
-    [self contactsSearchWithText:searchBar.text];
+    [self databaseSearchWithText:searchBar.text];
     NSLog(@"%s line:%d showContact:%@", __FUNCTION__, __LINE__, self.showContacts);
     [self.tableView reloadData];
     
@@ -360,6 +338,36 @@
         NSLog(@"%s line:%d failed:%d", __FUNCTION__, __LINE__, [self.researchRequest responseStatusCode]);
     }];
     [self.researchRequest  startAsynchronous];
+
+    
+}
+
+//通过数据库查找
+- (void)databaseSearchWithText:(NSString *)searchText
+{
+    if ([self.db open]) {
+        NSString * sql = [NSString stringWithFormat:
+                          @"SELECT * FROM %@",searchText];
+        FMResultSet * rs = [self.db executeQuery:sql];
+        while ([rs next]) {
+
+            ContactsCell *contact = [[ContactsCell alloc] init];
+            NSString * company = [rs stringForColumn:@"company"];
+            NSString * department = [rs stringForColumn:@"department"];
+            NSString * salerName = [rs stringForColumn:@"salerName"];
+            NSString * tel = [rs stringForColumn:@"tel"];
+            
+            contact.companyLabel.text = company;
+            contact.departmentLabel.text = department;
+            contact.salerNameLabel.text = salerName;
+            contact.telLabel.text = tel;
+            
+            [self.showContacts addObject:contact];
+
+            NSLog(@"company = %@, department = %@, salerName = %@  tel = %@", company, department, salerName, tel);
+        }
+        [self.db close];
+    }
 
     
 }

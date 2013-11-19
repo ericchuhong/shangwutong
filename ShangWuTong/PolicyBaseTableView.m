@@ -154,7 +154,7 @@
     
     [NC.navigationController pushViewController:detailViewController animated:YES];
     
-    [detailViewController release];
+//    [detailViewController release];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }

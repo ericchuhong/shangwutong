@@ -10,14 +10,14 @@
 
 @implementation GoodsModel
 
-- (void)dealloc
-{
-    self.goodsDiscount = nil;
-    self.goodsIntroduce = nil;
-    self.goodsTitle = nil;
-    self.goodsImg = nil;
-    [super dealloc];
-}
+//- (void)dealloc
+//{
+//    self.goodsDiscount = nil;
+//    self.goodsIntroduce = nil;
+//    self.goodsTitle = nil;
+//    self.goodsImg = nil;
+//    [super dealloc];
+//}
 
 + (void)setUserNick:(NSString *)userNick
         andPassword:(NSString *)password

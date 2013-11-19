@@ -54,21 +54,21 @@
 //    return self;
 //}
 
-- (void)dealloc
-{
-//    [_allPolicyView release]; _allPolicyView = nil;
-//    [_eatintPolicyView release]; _eatintPolicyView = nil;
-//    [_livingPolicyView release]; _livingPolicyView = nil;
-//    [_movingPolicyView release]; _movingPolicyView = nil;
-    [_policyView release]; _policyView = nil;
-    
-    [super dealloc];
-}
+//- (void)dealloc
+//{
+////    [_allPolicyView release]; _allPolicyView = nil;
+////    [_eatintPolicyView release]; _eatintPolicyView = nil;
+////    [_livingPolicyView release]; _livingPolicyView = nil;
+////    [_movingPolicyView release]; _movingPolicyView = nil;
+//    [_policyView release]; _policyView = nil;
+//    
+//    [super dealloc];
+//}
 
 - (void)loadView{
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth, KDeviceHeight-44)];
     self.view = view;
-    [view release];
+//    [view release];
     [self loadPolicyView];
 }
 
@@ -207,7 +207,7 @@
     
     
     [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
+//    [detailViewController release];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }

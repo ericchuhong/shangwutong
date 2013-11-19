@@ -24,15 +24,15 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_companyName release];
-    [_companyDesc release];
-    [_goodsPicArray release];
-    [_dictForDiscData release];
-    [_discountDesc release];
-    [super dealloc];
-}
+//- (void)dealloc
+//{
+//    [_companyName release];
+//    [_companyDesc release];
+//    [_goodsPicArray release];
+//    [_dictForDiscData release];
+//    [_discountDesc release];
+//    [super dealloc];
+//}
 
 - (void)viewDidLoad
 {
@@ -58,20 +58,20 @@
         [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[self.goodsPicArray objectAtIndex:index]]]];
         
         [scrollView addSubview:imageView];
-        [imageView release];
+//        [imageView release];
         _x += 320;
         
     }
     
     [self.view addSubview:scrollView];
-    [scrollView release];
+//    [scrollView release];
     
     UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 184, 320, 30)];
     
     pageControl.numberOfPages = 3;
     pageControl.tag = 101;
     [self.view addSubview:pageControl];
-    [pageControl release];
+//    [pageControl release];-fno-objc-arc
     
 }
 

@@ -37,7 +37,7 @@
     [self presentViewController:loginVC animated:NO completion:nil];
     [self removeFromParentViewController];
     
-    [loginVC release];
+//    [loginVC release];
 }
 
 - (void)didReceiveMemoryWarning

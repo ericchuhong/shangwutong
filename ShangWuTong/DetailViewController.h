@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BFSegmentControl.h"
+//#import "BFSegmentControl.h"
 #import "GoodsBaseTableView.h"
 #import "BaseViewController.h"
 
 
-@interface DetailViewController : BaseViewController<BFSegmentControlDataSource,UITableViewDataSource,UITableViewDelegate>
+@interface DetailViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 {
-    NSArray *categoryArray;
+//    NSArray *categoryArray;
     
-    BFSegmentControl *categorySegment;
+//    BFSegmentControl *categorySegment;
     
     CGFloat currentWidth;
     GoodsBaseTableView *_allGoodsView;

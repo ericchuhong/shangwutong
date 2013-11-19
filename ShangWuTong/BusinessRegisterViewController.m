@@ -75,7 +75,7 @@
             [GoodsModel setUK:[[dic objectForKey:@"user"] objectForKey:@"userKey"]];
             DetailViewController *detailVC = [[DetailViewController alloc] init];
             [self.navigationController pushViewController:detailVC animated:YES];
-            [detailVC release];
+//            [detailVC release];
         }
         
     }];

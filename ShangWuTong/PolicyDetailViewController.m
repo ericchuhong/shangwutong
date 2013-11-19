@@ -8,6 +8,8 @@
 
 #import "PolicyDetailViewController.h"
 #import "UIImageView+WebCache.h"
+#import "UIImageView+OnlineImage.h"
+#import "OnlineImageView.h"
 
 @interface PolicyDetailViewController ()
 
@@ -24,13 +26,13 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_policyPicArray release];
-    [_policyLableDetail release];
-    [_dictForPolicyData release];
-    [super dealloc];
-}
+//- (void)dealloc
+//{
+//    [_policyPicArray release];
+//    [_policyLableDetail release];
+//    [_dictForPolicyData release];
+//    [super dealloc];
+//}
 
 - (void)viewDidLoad
 {
@@ -59,29 +61,36 @@
     float _x = 0;
     for (int index = 0; index < 3; index++) {
 //        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0+_x, 0, 320, 200)];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default_failLoad.jpg"]];
-        imageView.frame = CGRectMake(0+_x, 0, 320, 200);
-
         
+        //去掉注释在每次加载前清空缓存
+        ImageCacheQueue* cache = [ImageCacheQueue sharedCache];
+        [cache clearCache];
+        
+//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default_failLoad.jpg"]];
+//        imageView.frame = CGRectMake(0+_x, 0, 320, 200);
+         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0+_x, 0, 320, 200)];
+      
 //        NSString *imageName = [NSString stringWithFormat:@"image%d",index+1];
 //        imageView.image = [UIImage imageNamed:imageName];
-        [imageView setImageWithURL:[NSURL URLWithString:[self.policyPicArray objectAtIndex:index]]];
+//        [imageView setImageWithURL:[NSURL URLWithString:[self.policyPicArray objectAtIndex:index]]];
+
+        [imageView setOnlineImage:[NSURL URLWithString:[self.policyPicArray objectAtIndex:index]] placeholderImage:[UIImage imageNamed:@"Default_failLoad.jpg"]];
         
         [scrollView addSubview:imageView];
-        [imageView release];
+//        [imageView release];
         _x += 320;
     
     }
     
     [self.view addSubview:scrollView];
-    [scrollView release];
+//    [scrollView release];
     
     UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 184-44, 320, 30)];
     
     pageControl.numberOfPages = 3;
     pageControl.tag = 101;
     [self.view addSubview:pageControl];
-    [pageControl release];
+//    [pageControl release];
     
     self.policyLableDetail.backgroundColor = [UIColor lightGrayColor];
     

@@ -88,14 +88,14 @@
     _endTimeLabel.frame = CGRectMake(_starTimeLabel.right, _locationLabel.bottom, _titleLabel.width/2, 20);
 }
 
-- (void)dealloc
-{
-
-    [_imgview release];_imgview = nil;
-    [_titleLabel release];_titleLabel = nil;
-    [_introduceLabel release];_introduceLabel = nil;
-    [_discountLabel release];_discountLabel = nil;    
-    [super dealloc];
-}
+//- (void)dealloc
+//{
+//
+//    [_imgview release];_imgview = nil;
+//    [_titleLabel release];_titleLabel = nil;
+//    [_introduceLabel release];_introduceLabel = nil;
+//    [_discountLabel release];_discountLabel = nil;    
+//    [super dealloc];
+//}
 
 @end

@@ -9,7 +9,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ASIHTTPRequest.h"
-#import "BFSegmentControl.h"
+//#import "BFSegmentControl.h"
 #import "PolicyBaseTableView.h"
 #import "BaseViewController.h"
 

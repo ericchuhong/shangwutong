@@ -116,13 +116,13 @@
 - (void)login{
     BussinessLoginViewController *loginlVC = [[BussinessLoginViewController alloc] init];
     [self.navigationController pushViewController:loginlVC animated:YES];
-    [loginlVC release];
+//    [loginlVC release];
 }
 
 - (void)regist{
     BusinessRegisterViewController *registlVC = [[BusinessRegisterViewController alloc] init];
     [self.navigationController pushViewController:registlVC animated:YES];
-    [registlVC release];
+//    [registlVC release];
     
 }
 

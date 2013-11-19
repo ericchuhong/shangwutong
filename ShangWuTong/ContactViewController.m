@@ -150,7 +150,7 @@
             [ContactsModel setGNK:[[dic objectForKey:@"groupNum"] objectForKey:@"groupNumKey"]];
             ContacetsViewController *contactVC = [[ContacetsViewController alloc] init];
             [self.navigationController pushViewController:contactVC animated:YES];
-            [contactVC release];
+//            [contactVC release];-fno-objc-arc
         }
         
         
