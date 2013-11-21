@@ -61,6 +61,7 @@
     NSString *documentDirectory = [paths objectAtIndex:0];
     NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"contacts.db"];
     //创建数据库实例 db  这里说明下:如果路径中不存在"contacts.db"的文件,sqlite会自动创建"contacts.db"
+    NSLog(@"%@",dbPath);
     self.db= [FMDatabase databaseWithPath:dbPath] ;
     if (![self.db open]) {
         NSLog(@"Could not open db.");
@@ -69,10 +70,11 @@
    //创建表
     NSString* sql =
     @"CREATE TABLE IF NOT EXISTS contacts("
+    "id INTEGER PRIMARY KEY," //
     "company TEXT,"     //对应 company
     "department TEXT,"  //对应 department
     "salerName TEXT,"   //对应 salerName
-    "tel TEXT,"         //对应 tel
+    "tel TEXT"         //对应 tel
     ");";
     
     if (![self.db executeUpdate:sql]) {
@@ -134,17 +136,20 @@
         }else {
             self.contactsArray = [NSMutableArray arrayWithArray:[self.contactsDict objectForKey:@"groupNum"]];
             self.showContacts = [self.contactsArray mutableCopy];
+            NSLog(@"%@",_contactsArray);
             
-            for (NSMutableDictionary *item in self.contactsArray) {
+            
+            for (NSMutableDictionary *item in _contactsArray) {
                 ContactsCell *contact = [[ContactsCell alloc] init];
+                
                 contact.companyLabel = [item objectForKey:@"companyName"];
                 contact.departmentLabel = [item objectForKey:@"department"];
                 contact.salerNameLabel = [item objectForKey:@"name"];
                 contact.telLabel = [item objectForKey:@"phone"];
                 
-                [self.contactsArray addObject:contact];
+                [self.showContacts addObject:contact];
                 
-                NSString* sql = [[NSString alloc] initWithFormat:@"insert or replace into contacts values('%@', '%@', '%@', '%@')", contact.companyLabel,contact.departmentLabel,contact.salerNameLabel, contact.telLabel];
+                NSString* sql = [[NSString alloc] initWithFormat:@"insert or replace into contacts values('%@', '%@', '%@', '%@', '%@')", contact.telLabel,contact.companyLabel,contact.departmentLabel,contact.salerNameLabel, contact.telLabel];
                 BOOL retCode = [self.db executeUpdate:sql];
                 if (retCode == NO)
                 {
@@ -346,27 +351,43 @@
 - (void)databaseSearchWithText:(NSString *)searchText
 {
     if ([self.db open]) {
-        NSString * sql = [NSString stringWithFormat:
-                          @"SELECT * FROM %@",searchText];
+        [self.showContacts removeAllObjects];
+        
+//        NSString * sql = [NSString stringWithFormat:
+//                          @"SELECT * FROM %@",searchText];
+        NSString* sql = [NSString stringWithFormat:@"select * from contacts where company like '%%%@%%' or department like '%%%@%%' or salerName like '%%%@%%' or tel like '%%%@%%'", searchText, searchText, searchText, searchText];
+        //NSLog(@"%s line:%d sql = %@", __FUNCTION__, __LINE__, sql);3
+        
         FMResultSet * rs = [self.db executeQuery:sql];
-        while ([rs next]) {
 
+        while ([rs next]) {
+            NSMutableDictionary *contact1 = [[NSMutableDictionary alloc] initWithCapacity:1];
             ContactsCell *contact = [[ContactsCell alloc] init];
             NSString * company = [rs stringForColumn:@"company"];
             NSString * department = [rs stringForColumn:@"department"];
             NSString * salerName = [rs stringForColumn:@"salerName"];
             NSString * tel = [rs stringForColumn:@"tel"];
             
+            [contact1 setObject:company forKey:@"companyName"];
+            [contact1 setObject:department forKey:@"phone"];
+            [contact1 setObject:salerName forKey:@"name"];
+            [contact1 setObject:tel forKey:@"department"];
+
+            
             contact.companyLabel.text = company;
             contact.departmentLabel.text = department;
             contact.salerNameLabel.text = salerName;
             contact.telLabel.text = tel;
             
-            [self.showContacts addObject:contact];
+            
+            
+            [self.showContacts addObject:contact1];
+
 
             NSLog(@"company = %@, department = %@, salerName = %@  tel = %@", company, department, salerName, tel);
         }
         [self.db close];
+        [self.tableView reloadData];
     }
 
     

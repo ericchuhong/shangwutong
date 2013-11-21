@@ -64,7 +64,7 @@
     self.policyRequest = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [self.policyRequest setCompletionBlock:^{
         
-        self.policyDict = [NSJSONSerialization JSONObjectWithData:[self.policyRequest responseData] options:NSJSONReadingMutableContainers error:nil];
+        _policyDict = [NSJSONSerialization JSONObjectWithData:[_policyRequest responseData] options:NSJSONReadingMutableContainers error:nil];
         NSString *result = [NSString stringWithString:[[self.policyDict objectForKey:@"flag"]stringValue]];
         if ([result isEqualToString:@"-1"]) {
             //   未知错误
@@ -126,7 +126,12 @@
     c.policyDes.text = [self.policyArray[indexPath.row] objectForKey:@"policyDesc"];
 //    c.introduceLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"conmpanyDesc"];
 //    c.discountLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"discountDesc"];
-    [c.policyView setImageWithURL:[self.policyArray[indexPath.row] objectForKey:@"pic"]];
+    
+    [c.policyView setImageWithURL:[[self.policyArray[indexPath.row] objectForKey:@"pic"] objectAtIndex:0] placeholderImage:[UIImage imageNamed:@"Default_failLoad.jpg"]];
+//    [c.policyView  setOnlineImage:[self.policyPicArray objectAtIndex:index] placeholderImage:[UIImage imageNamed:@"Default_failLoad.jpg"]];
+    //    self.policyPicArray = [self.dictForPolicyData objectForKey:@"pic"];
+
+    
 //    c.locationLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"location"];
 //    c.starTimeLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"starTime"];
 //    c.endTimeLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"endTime"];

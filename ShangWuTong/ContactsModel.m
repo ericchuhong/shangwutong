@@ -51,7 +51,7 @@
 + (void)SavePassword:(BOOL)_isSavePassword{
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     [def removeObjectForKey:Phone_isSavePassword];
-    [def setObject:(_isSavePassword ? @"1" : @"0") forKey:Goods_isSavePassword];
+    [def setObject:(_isSavePassword ? @"1" : @"0") forKey:Phone_isSavePassword];
     [def synchronize];
 }
 

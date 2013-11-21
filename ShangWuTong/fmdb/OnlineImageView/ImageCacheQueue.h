@@ -9,10 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ImageCacheQueue : NSObject
-{
-    NSMutableDictionary *memoryCache;
-    NSString *diskCachePath;
-}
+
 
 + (id)sharedCache;
 

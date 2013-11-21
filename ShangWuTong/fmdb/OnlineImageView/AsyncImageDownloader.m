@@ -24,7 +24,7 @@ static AsyncImageDownloader *sharedDownloader = nil;
 
 - (id)init
 {
-    self = [ super init];
+    self = [super init];
     if (nil == sharedDownloader) {
         asyncQueue = [[NSOperationQueue alloc] init];
         

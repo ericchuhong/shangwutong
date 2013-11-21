@@ -31,6 +31,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.NumberTextField.delegate = self;
     self.PassWordTextField.delegate = self;
+    
     [self.passwdSwitch addTarget:self action:@selector(passwdSwitchPressed) forControlEvents:UIControlEventValueChanged];
     BOOL switchStatus = [ContactsModel isSavePassword];
     [self.passwdSwitch setOn:switchStatus];
@@ -96,11 +97,11 @@
         [alert show];
     }else 
     {
-        UIAlertView *alert = [[UIAlertView alloc] init];
-        alert.title = @"温馨提示";
-        alert.message = [NSString stringWithFormat:@"Num:%@\nPassword:%@",[NumberTextField text],[PassWordTextField text]];
-        [alert addButtonWithTitle:@"确定"];
-        [alert show];
+//        UIAlertView *alert = [[UIAlertView alloc] init];
+//        alert.title = @"温馨提示";
+//        alert.message = [NSString stringWithFormat:@"Num:%@\nPassword:%@",[NumberTextField text],[PassWordTextField text]];
+//        [alert addButtonWithTitle:@"确定"];
+//        [alert show];
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [self goodsLoginWithPhone:[self.NumberTextField text] phonePassword:[self.PassWordTextField text]];
@@ -166,6 +167,12 @@
     [NumberTextField resignFirstResponder];
     [PassWordTextField resignFirstResponder];
     return YES;
+}
+
+- (void)passwdSwitchPressed
+{
+    [ContactsModel SavePassword:self.passwdSwitch.on];
+
 }
 
 @end

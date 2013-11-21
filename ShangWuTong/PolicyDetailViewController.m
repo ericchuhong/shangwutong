@@ -63,8 +63,8 @@
 //        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0+_x, 0, 320, 200)];
         
         //去掉注释在每次加载前清空缓存
-        ImageCacheQueue* cache = [ImageCacheQueue sharedCache];
-        [cache clearCache];
+//        ImageCacheQueue* cache = [ImageCacheQueue sharedCache];
+//        [cache clearCache];
         
 //        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default_failLoad.jpg"]];
 //        imageView.frame = CGRectMake(0+_x, 0, 320, 200);
@@ -74,7 +74,10 @@
 //        imageView.image = [UIImage imageNamed:imageName];
 //        [imageView setImageWithURL:[NSURL URLWithString:[self.policyPicArray objectAtIndex:index]]];
 
-        [imageView setOnlineImage:[NSURL URLWithString:[self.policyPicArray objectAtIndex:index]] placeholderImage:[UIImage imageNamed:@"Default_failLoad.jpg"]];
+        [imageView setOnlineImage:[self.policyPicArray objectAtIndex:index] placeholderImage:[UIImage imageNamed:@"Default_failLoad.jpg"]];
+        
+        
+        NSLog(@"%@",[self.policyPicArray objectAtIndex:index]);
         
         [scrollView addSubview:imageView];
 //        [imageView release];
@@ -85,7 +88,7 @@
     [self.view addSubview:scrollView];
 //    [scrollView release];
     
-    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 184-44, 320, 30)];
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 184-20, 320, 30)];
     
     pageControl.numberOfPages = 3;
     pageControl.tag = 101;

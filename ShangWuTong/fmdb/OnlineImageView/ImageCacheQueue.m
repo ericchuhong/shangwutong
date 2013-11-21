@@ -9,6 +9,15 @@
 #import "ImageCacheQueue.h"
 #import "NSString+MD5.h"
 
+
+@interface ImageCacheQueue ()
+
+@property (nonatomic, strong) NSMutableDictionary *memoryCache;
+@property (nonatomic, strong) NSString *diskCachePath;
+@property (nonatomic, strong) ImageCacheQueue* instance;        //避免被释放掉
+
+@end
+
 static ImageCacheQueue *sharedCacheQueue = nil;
 
 @implementation ImageCacheQueue
@@ -19,21 +28,21 @@ static ImageCacheQueue *sharedCacheQueue = nil;
     self = [super init];
     if (nil != sharedCacheQueue) {
         //
+        NSLog(@"%s line:%d nil != sharedCacheQueue", __FUNCTION__, __LINE__);
     } else {
-        memoryCache = [[NSMutableDictionary alloc] init];
+        self.memoryCache = [[NSMutableDictionary alloc] init];
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-        diskCachePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"ImageCache"];
+        self.diskCachePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"ImageCache"];
         
-        if (![[NSFileManager defaultManager] fileExistsAtPath:diskCachePath]) {
+        if (![[NSFileManager defaultManager] fileExistsAtPath:self.diskCachePath]) {
             NSError *error = nil;
-            [[NSFileManager defaultManager] createDirectoryAtPath:diskCachePath
+            [[NSFileManager defaultManager] createDirectoryAtPath:self.diskCachePath
                                       withIntermediateDirectories:YES
                                                        attributes:nil
                                                             error:&error];
         }
-        
-        sharedCacheQueue = self;
+
     }
     return sharedCacheQueue;
 }
@@ -43,6 +52,8 @@ static ImageCacheQueue *sharedCacheQueue = nil;
     @synchronized (self) {
         if (nil == sharedCacheQueue) {
             sharedCacheQueue = [[ImageCacheQueue alloc] init];
+            sharedCacheQueue.instance = sharedCacheQueue;
+            //NSLog(@"%s line:%d", __FUNCTION__, __LINE__);
         }
         return sharedCacheQueue;
     }
@@ -74,11 +85,11 @@ static ImageCacheQueue *sharedCacheQueue = nil;
 {
     //return [memoryCache objectForKey:key];
     
-    if ([memoryCache objectForKey:key]) {
-#ifdef DEBUG
+    if ([_memoryCache objectForKey:key]) {
+#if SHOW_CACHE_MSG
         NSLog(@"%@ was hit in memory cache.\n", key);
 #endif 
-        return [memoryCache objectForKey:key];
+        return [self.memoryCache objectForKey:key];
     }
     
     return nil;
@@ -86,7 +97,7 @@ static ImageCacheQueue *sharedCacheQueue = nil;
 
 - (UIImage *)getImageFromDiskByKey:(NSString *)key
 {
-    NSString *localPath = [diskCachePath stringByAppendingPathComponent:[key MD5]];
+    NSString *localPath = [self.diskCachePath stringByAppendingPathComponent:[key MD5]];
     if (![[NSFileManager defaultManager] fileExistsAtPath:localPath]) {
         return nil;
     }
@@ -95,7 +106,7 @@ static ImageCacheQueue *sharedCacheQueue = nil;
     //return (nil == image) ? nil : image;
     
     if (nil != image) {
-#ifdef DEBUG
+#if SHOW_CACHE_MSG
         NSLog(@"%@ was hit in disk cache.\n", key);
 #endif 
         /* Hitting here means missing in memory cache */
@@ -113,10 +124,10 @@ static ImageCacheQueue *sharedCacheQueue = nil;
 {
     /* What size is suitable for memoryCache ? */
     /* FIFO Schedule or LRU ? */
-    [memoryCache setObject:[info objectForKey:@"image"] forKey:[info objectForKey:@"key"]];
+    [self.memoryCache setObject:[info objectForKey:@"image"] forKey:[info objectForKey:@"key"]];
     
-#ifdef DEBUG
-    NSLog(@"%@ was cached.\n", [info objectForKey:@"key"]);
+#if SHOW_CACHE_MSG
+    NSLog(@"%s line:%d %@ was cached.", __FUNCTION__, __LINE__, [info objectForKey:@"key"]);
 #endif
 }
 
@@ -125,7 +136,7 @@ static ImageCacheQueue *sharedCacheQueue = nil;
     NSString *key = [info objectForKey:@"key"];
     UIImage *image = [info objectForKey:@"image"];
     
-    NSString *localPath = [diskCachePath stringByAppendingPathComponent:[key MD5]];
+    NSString *localPath = [_diskCachePath stringByAppendingPathComponent:[key MD5]];
     NSData *localData = UIImageJPEGRepresentation(image, 1.0f);
     
     if ([localData length] <= 1) {
@@ -136,22 +147,22 @@ static ImageCacheQueue *sharedCacheQueue = nil;
         [[NSFileManager defaultManager] createFileAtPath:localPath contents:localData attributes:nil];
     }
     
-#ifdef DEBUG
-    NSLog(@"%@ was saved to disk %@.\n", key, localPath);
+#if SHOW_CACHE_MSG
+    NSLog(@"%s line:%d %@ was saved to disk %@.\n", __FUNCTION__, __LINE__, key, localPath);
 #endif
 }
 
 /* Empty The Cache */
 - (void)clearMemoryCache
 {
-    [memoryCache removeAllObjects];
+    [_memoryCache removeAllObjects];
 }
 
 - (void)clearDiskCache
 {
     NSError *error = nil;
-    [[NSFileManager defaultManager] removeItemAtPath:diskCachePath error:&error];
-    [[NSFileManager defaultManager] createDirectoryAtPath:diskCachePath
+    [[NSFileManager defaultManager] removeItemAtPath:_diskCachePath error:&error];
+    [[NSFileManager defaultManager] createDirectoryAtPath:_diskCachePath
                               withIntermediateDirectories:YES
                                                attributes:nil
                                                     error:&error];
