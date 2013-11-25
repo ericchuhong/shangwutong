@@ -15,9 +15,10 @@
 @property (nonatomic, strong) __block ASIHTTPRequest    *request;
 @property (nonatomic, strong) NSMutableDictionary    *goodsDict;
 @property (nonatomic, strong) NSMutableArray        *goodsArray;
+@property (nonatomic, strong) NSMutableArray        *showArray;
 
 - (void)loadDataWithURL:(NSString *)url;
-- (void)reloadDataWithArray:(NSArray *)array;
+- (void)reloadDataWithArray;
 
 
 @end

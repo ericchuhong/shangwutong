@@ -14,6 +14,7 @@
 @property (nonatomic,retain)IBOutlet UILabel *companyName;
 @property (nonatomic,retain)IBOutlet UILabel *companyDesc;
 @property (nonatomic,retain)IBOutlet UILabel *discountDesc;
+@property (nonatomic,retain)IBOutlet UIImageView *bgImage;
 
 @property (nonatomic,retain) NSMutableDictionary *dictForDiscData;
 

@@ -30,6 +30,7 @@
     if ([self.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
     {
         [self.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+        
 //        [self.navigationBar setBackgroundColor:[UIColor colorWithRed:7.0/255 green:149.0/255 blue:211.0/255 alpha:0.0]];
     }
 }

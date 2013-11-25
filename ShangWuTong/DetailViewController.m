@@ -27,14 +27,14 @@
 - (void) loadLivingGoodsView;
 - (void) loadMovingGoodsView;
 
-- (void) changeBaseView:(UIView *)baseView withSelectedIndex:(NSInteger)selectedIndex;
+//- (void) changeBaseView:(UIView *)baseView withSelectedIndex:(NSInteger)selectedIndex;
 ///////////////////////////////////////////////////////////////////////
 
 //加载数据
-- (void)requestData;
+//- (void)requestData;
 
 //刷新UI
-- (void)refreshUI;
+//- (void)refreshUI;
 
 @end
 
@@ -64,12 +64,16 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 100, kDeviceWidth, KDeviceHeight)];
     self.view = view;
 //    [view release];
+    [self loadAllGoodsView];
     [self loadMovingGoodsView];
     [self loadEatingGoodsView];
     [self loadLivingGoodsView];
-    [self loadAllGoodsView];
-
-        
+    _allGoodsView.hidden = NO;
+    _eatintGoodsView.hidden = YES;
+    _movingGoodsView.hidden = YES;
+    _livingGoodsView.hidden = YES;
+    
+    
 }
 
 
@@ -79,12 +83,122 @@
     [self.view setBackgroundColor:[UIColor clearColor]];
     
     currentWidth = self.view.frame.size.width;
-
-//    categorySegment = [[BFSegmentControl alloc]initWithFrame:CGRectMake(0,0,320, 50) withDataSource:self];
+/*    categorySegment = [[BFSegmentControl alloc]initWithFrame:CGRectMake(0,0,320, 50) withDataSource:self];
 //    [self.view addSubview:categorySegment];
 //    [categorySegment release];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushView:) name:@"PUSH_GOODS_DETAIL" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushView:) name:@"PUSH_GOODS_DETAIL" object:nil];
+ */
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    CCSegmentedControl* segmentedControl = [[CCSegmentedControl alloc] initWithItems:@[@"全部", @"美食", @"住宿", @"娱乐"]];
+    segmentedControl.frame = CGRectMake(0, 0, 320, 50);
+    
+    //设置背景图片，或者设置颜色，或者使用默认白色外观
+    segmentedControl.backgroundImage = [UIImage imageNamed:@"segment_bg.png"];
+    //segmentedControl.backgroundColor = [UIColor grayColor];
+    
+    //阴影部分图片，不设置使用默认椭圆外观的stain
+    segmentedControl.selectedStainView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stain.png"]];
+    segmentedControl.selectedSegmentTextColor = [UIColor whiteColor];
+    segmentedControl.segmentTextColor = [self colorWithHexString:@"#535353"];
+    [segmentedControl addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:segmentedControl];
+    
+}
+
+#pragma mark - CCSegmentedControl private method
+
+- (void)valueChanged:(id)sender
+{
+    CCSegmentedControl* segmentedControl = sender;
+    NSLog(@"%s line:%d segment has changed to %d", __FUNCTION__, __LINE__, segmentedControl.selectedSegmentIndex);
+    
+    NSInteger Index = segmentedControl.selectedSegmentIndex;
+    
+    GoodsBaseTableView *allGV = _allGoodsView;
+    GoodsBaseTableView *eatGV = _eatintGoodsView;
+    GoodsBaseTableView *liveGV = _livingGoodsView;
+    GoodsBaseTableView *moveGV = _movingGoodsView;
+    
+    if (Index == 0) {
+        allGV.hidden = NO;
+        eatGV.hidden = YES;
+        liveGV.hidden = YES;
+        moveGV.hidden = YES;
+        
+        //        [allGV reloadDataWithArray:_allGoodsView.goodsArray];
+        
+        
+    }else if (Index == 1){
+        allGV.hidden = YES;
+        eatGV.hidden = NO;
+        liveGV.hidden = YES;
+        moveGV.hidden = YES;
+        
+        //        [eatGV reloadDataWithArray:_allGoodsView.goodsArray];
+        
+    }else if (Index == 2){
+        allGV.hidden = YES;
+        eatGV.hidden = YES;
+        liveGV.hidden = NO;
+        moveGV.hidden = YES;
+        
+        //        [eatGV reloadDataWithArray:_livingGoodsView.goodsArray];
+        
+    }else if (Index == 3){
+        
+        allGV.hidden = YES;
+        eatGV.hidden = YES;
+        liveGV.hidden = YES;
+        moveGV.hidden = NO;
+        
+        //        [eatGV reloadDataWithArray:_movingGoodsView.goodsArray];
+        
+    }
+    
+}
+
+- (UIColor *) colorWithHexString: (NSString *) hexString {
+    NSString *colorString = [[hexString stringByReplacingOccurrencesOfString: @"#" withString: @""] uppercaseString];
+    CGFloat alpha, red, blue, green;
+    switch ([colorString length]) {
+        case 3: // #RGB
+            alpha = 1.0f;
+            red   = [self colorComponentFrom: colorString start: 0 length: 1];
+            green = [self colorComponentFrom: colorString start: 1 length: 1];
+            blue  = [self colorComponentFrom: colorString start: 2 length: 1];
+            break;
+        case 4: // #ARGB
+            alpha = [self colorComponentFrom: colorString start: 0 length: 1];
+            red   = [self colorComponentFrom: colorString start: 1 length: 1];
+            green = [self colorComponentFrom: colorString start: 2 length: 1];
+            blue  = [self colorComponentFrom: colorString start: 3 length: 1];
+            break;
+        case 6: // #RRGGBB
+            alpha = 1.0f;
+            red   = [self colorComponentFrom: colorString start: 0 length: 2];
+            green = [self colorComponentFrom: colorString start: 2 length: 2];
+            blue  = [self colorComponentFrom: colorString start: 4 length: 2];
+            break;
+        case 8: // #AARRGGBB
+            alpha = [self colorComponentFrom: colorString start: 0 length: 2];
+            red   = [self colorComponentFrom: colorString start: 2 length: 2];
+            green = [self colorComponentFrom: colorString start: 4 length: 2];
+            blue  = [self colorComponentFrom: colorString start: 6 length: 2];
+            break;
+        default:
+            [NSException raise:@"Invalid color value" format: @"Color value %@ is invalid.  It should be a hex value of the form #RBG, #ARGB, #RRGGBB, or #AARRGGBB", hexString];
+            break;
+    }
+    return [UIColor colorWithRed: red green: green blue: blue alpha: alpha];
+}
+
+- (CGFloat) colorComponentFrom: (NSString *) string start: (NSUInteger) start length: (NSUInteger) length {
+    NSString *substring = [string substringWithRange: NSMakeRange(start, length)];
+    NSString *fullHex = length == 2 ? substring : [NSString stringWithFormat: @"%@%@", substring, substring];
+    unsigned hexComponent;
+    [[NSScanner scannerWithString: fullHex] scanHexInt: &hexComponent];
+    return hexComponent / 255.0;
 }
 
 - (void)pushView:(NSNotification *)notification {
@@ -101,7 +215,7 @@
 //加载全部商品视图
 - (void) loadAllGoodsView
 {
-    _allGoodsView = [[GoodsBaseTableView alloc] initWithFrame:CGRectMake(0, 37, kDeviceWidth, KDeviceHeight - 44+ 44 - 49)];
+    _allGoodsView = [[GoodsBaseTableView alloc] initWithFrame:CGRectMake(0, 50, kDeviceWidth, KDeviceHeight - 20 - 44 - 50 - 49)];
     _allGoodsView.backgroundColor = [UIColor purpleColor];
 
     //    _allGoodsView.rowHeight = 80;
@@ -123,17 +237,17 @@
 - (void) loadEatingGoodsView
 {
     //    testSegment.frame.origin.y+testSegment.frame.size.height
-    _eatintGoodsView = [[GoodsBaseTableView alloc] initWithFrame:CGRectMake(0, 37, kDeviceWidth,KDeviceHeight - 20 + 44 - 49)];
+    _eatintGoodsView = [[GoodsBaseTableView alloc] initWithFrame:CGRectMake(0, 50, kDeviceWidth,KDeviceHeight - 20 - 44 - 50 - 49)];
     _eatintGoodsView.backgroundColor = [UIColor yellowColor];
     
-        _eatintGoodsView.tag = kEatingGoodsTag;
+    _eatintGoodsView.tag = kEatingGoodsTag;
     
     NSString *userNick = [GoodsModel getUserNick];
     NSString *userKey = [GoodsModel getUK];
     
-    NSString *contactsHost = [NSString stringWithFormat:SERVER_HOST,userNick,userKey,@"food"];
+    NSString *contactsHost = [NSString stringWithFormat:SERVER_HOST,userNick,userKey,@"total"];
     
-    [_allGoodsView loadDataWithURL:contactsHost];
+    [_eatintGoodsView loadDataWithURL:contactsHost];
     
     [self.view addSubview:_eatintGoodsView];
 }
@@ -141,17 +255,24 @@
 //加载全部住视图
 - (void) loadLivingGoodsView
 {
-    _livingGoodsView = [[GoodsBaseTableView alloc] initWithFrame:CGRectMake(0, 37, kDeviceWidth, KDeviceHeight - 20 + 44 - 49)];
+    _livingGoodsView = [[GoodsBaseTableView alloc] initWithFrame:CGRectMake(0, 50, kDeviceWidth, KDeviceHeight - 20 - 44 - 50 - 49)];
     _livingGoodsView.backgroundColor = [UIColor redColor];
     
     _livingGoodsView.tag = kLivingGoodsTag;
     
+//    NSString *userNick = [GoodsModel getUserNick];
+//    NSString *userKey = [GoodsModel getUK];
+//    
+//    NSString *contactsHost = [NSString stringWithFormat:SERVER_HOST,userNick,userKey,@"reside"];
+//    
+//    [_allGoodsView loadDataWithURL:contactsHost];
+
     NSString *userNick = [GoodsModel getUserNick];
     NSString *userKey = [GoodsModel getUK];
     
-    NSString *contactsHost = [NSString stringWithFormat:SERVER_HOST,userNick,userKey,@"reside"];
+    NSString *contactsHost = [NSString stringWithFormat:SERVER_HOST,userNick,userKey,@"total"];
     
-    [_allGoodsView loadDataWithURL:contactsHost];
+    [_livingGoodsView loadDataWithURL:contactsHost];
     
     [self.view addSubview:_livingGoodsView];
 }
@@ -159,16 +280,26 @@
 //加载全部行视图
 - (void) loadMovingGoodsView
 {
-    _movingGoodsView = [[GoodsBaseTableView alloc] initWithFrame:CGRectMake(0, 37, kDeviceWidth,KDeviceHeight - 20 + 44 - 49)];
+    _movingGoodsView = [[GoodsBaseTableView alloc] initWithFrame:CGRectMake(0, 50, kDeviceWidth,KDeviceHeight - 20 - 44 - 50 - 49)];
     _movingGoodsView.backgroundColor = [UIColor cyanColor];
     _movingGoodsView.tag = kMovingGoodsTag;
+    _movingGoodsView.goodsArray = _allGoodsView.goodsArray;
     
+//    NSString *userNick = [GoodsModel getUserNick];
+//    NSString *userKey = [GoodsModel getUK];
+//    
+//    NSString *contactsHost = [NSString stringWithFormat:SERVER_HOST,userNick,userKey,@"play"];
+//    
+//    [_allGoodsView loadDataWithURL:contactsHost];
     NSString *userNick = [GoodsModel getUserNick];
     NSString *userKey = [GoodsModel getUK];
     
-    NSString *contactsHost = [NSString stringWithFormat:SERVER_HOST,userNick,userKey,@"play"];
+    NSString *contactsHost = [NSString stringWithFormat:SERVER_HOST,userNick,userKey,@"total"];
     
-    [_allGoodsView loadDataWithURL:contactsHost];
+    [_movingGoodsView loadDataWithURL:contactsHost];
+    
+    [_movingGoodsView reloadDataWithArray];
+
     
     [self.view addSubview:_movingGoodsView];
 }
@@ -179,80 +310,53 @@
 //}
 
 
-//- (void) changeBaseView:(UIView *)baseView withSelectedIndex:(NSInteger)Index
-//{
-//    categorySegment.selectedIndex = Index;
-//    
-//    GoodsBaseTableView *allGV = _allGoodsView;
-//    GoodsBaseTableView *eatGV = _eatintGoodsView;
-//    GoodsBaseTableView *liveGV = _livingGoodsView;
-//    GoodsBaseTableView *moveGV = _movingGoodsView;
-//    
-//    if (Index == 0) {
-//        allGV.hidden = NO;
-//        eatGV.hidden = YES;
-//        liveGV.hidden = YES;
-//        moveGV.hidden = YES;
-//        
-////        [allGV reloadDataWithArray:_allGoodsView.goodsArray];
-//
-//        
-//    }else if (Index == 1){
-//        allGV.hidden = YES;
-//        eatGV.hidden = NO;
-//        liveGV.hidden = YES;
-//        moveGV.hidden = YES;
-//        
-////        [eatGV reloadDataWithArray:_allGoodsView.goodsArray];
-//        
-//    }else if (Index == 2){
-//        allGV.hidden = YES;
-//        eatGV.hidden = YES;
-//        liveGV.hidden = NO;
-//        moveGV.hidden = YES;
-//        
-////        [eatGV reloadDataWithArray:_livingGoodsView.goodsArray];
-//        
-//    }else if (Index == 3){
-//        
-//        allGV.hidden = YES;
-//        eatGV.hidden = YES;
-//        liveGV.hidden = YES;
-//        moveGV.hidden = NO;
-//        
-////        [eatGV reloadDataWithArray:_movingGoodsView.goodsArray];
-//
-//    }
-//    
-//    
-//}
-
-#pragma mark - TableView DataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+/*- (void) changeBaseView:(UIView *)baseView withSelectedIndex:(NSInteger)Index
 {
-    return 5;
-}
-
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellIdentifier = @"cell";
-    GoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    categorySegment.selectedIndex = Index;
     
-    if (cell == nil) {
-//        cell = [[[GoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+    GoodsBaseTableView *allGV = _allGoodsView;
+    GoodsBaseTableView *eatGV = _eatintGoodsView;
+    GoodsBaseTableView *liveGV = _livingGoodsView;
+    GoodsBaseTableView *moveGV = _movingGoodsView;
+    
+    if (Index == 0) {
+        allGV.hidden = NO;
+        eatGV.hidden = YES;
+        liveGV.hidden = YES;
+        moveGV.hidden = YES;
+        
+//        [allGV reloadDataWithArray:_allGoodsView.goodsArray];
+
+        
+    }else if (Index == 1){
+        allGV.hidden = YES;
+        eatGV.hidden = NO;
+        liveGV.hidden = YES;
+        moveGV.hidden = YES;
+        
+//        [eatGV reloadDataWithArray:_allGoodsView.goodsArray];
+        
+    }else if (Index == 2){
+        allGV.hidden = YES;
+        eatGV.hidden = YES;
+        liveGV.hidden = NO;
+        moveGV.hidden = YES;
+        
+//        [eatGV reloadDataWithArray:_livingGoodsView.goodsArray];
+        
+    }else if (Index == 3){
+        
+        allGV.hidden = YES;
+        eatGV.hidden = YES;
+        liveGV.hidden = YES;
+        moveGV.hidden = NO;
+        
+//        [eatGV reloadDataWithArray:_movingGoodsView.goodsArray];
+
     }
     
     
-    return cell;
-}
-
-# pragma mark - TableView Dalegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 100;
-}
+}*/
 
 
 @end

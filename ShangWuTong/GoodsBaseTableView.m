@@ -10,6 +10,8 @@
 #import "GoodsCell.h"
 #import "UIImageView+WebCache.h"
 #import "GoodsDetailViewController.h"
+#import "OnlineImageView.h"
+#import "UIImageView+OnlineImage.h"
 
 #define kAllGoodsTag 101
 #define kEatingGoodsTag 102
@@ -31,22 +33,51 @@
     return self;
 }
 
-- (void)reloadDataWithArray:(NSArray *)array {
-    self.goodsArray = [self.goodsArray mutableCopy];
+- (void)reloadDataWithArray{
+    [self.showArray removeAllObjects];
     
     NSInteger goodsTag = self.tag;
     switch (goodsTag) {
         case kAllGoodsTag:
+            for (NSMutableDictionary *goods in self.goodsArray)
+            {
+                if ([[goods objectForKey:@"type"] isEqualToString:@"全部"])
+                {
+                    [self.showArray addObject:goods];
+                }
+            }
             self.goodsArray = [self.goodsArray mutableCopy];
+            self.backgroundColor = [UIColor yellowColor];
             break;
         case kEatingGoodsTag:
-            self.goodsArray = [self.goodsArray mutableCopy];
+            for (NSMutableDictionary *goods in self.goodsArray)
+            {
+                if ([[goods objectForKey:@"type"] isEqualToString:@"住宿"])
+                {
+                    [self.showArray addObject:goods];
+                }
+            }
+//            self.goodsArray = [self.goodsArray mutableCopy];
             break;
         case kLivingGoodsTag:
-            self.goodsArray = [self.goodsArray mutableCopy];
+//            self.goodsArray = [self.goodsArray mutableCopy];
+            for (NSMutableDictionary *goods in self.goodsArray)
+            {
+                if ([[goods objectForKey:@"type"] isEqualToString:@"美食"])
+                {
+                    [self.showArray addObject:goods];
+                }
+            }
             break;
         case kMovingGoodsTag:
             self.goodsArray = [self.goodsArray mutableCopy];
+            for (NSMutableDictionary *goods in self.goodsArray)
+            {
+                if ([[goods objectForKey:@"type"] isEqualToString:@"娱乐"])
+                {
+                    [self.showArray addObject:goods];
+                }
+            }
             break;
             
             
@@ -91,8 +122,10 @@
         self.goodsArray = [NSMutableArray arrayWithArray:[self.goodsDict objectForKey:@"discount"]];
         
         
-        self.goodsArray = [self.goodsArray mutableCopy];
-        
+        self.showArray = [self.goodsArray mutableCopy];
+            if (self.tag != kAllGoodsTag) {
+                [self reloadDataWithArray];
+            }
         
         [self.goodsTableView reloadData];
         }
@@ -101,6 +134,7 @@
         NSLog(@"failed %d", [self.request responseStatusCode]);
     }];
     [self.request startAsynchronous];
+    
 }
 /*
 //- (void)reloadUserkey:(NSString *)url {
@@ -123,24 +157,31 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.goodsArray.count;
+    return [self.showArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"CellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    GoodsCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[GoodsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    GoodsCell *c = (GoodsCell *)cell;
-    c.titleLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"companyName"];
-    c.introduceLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"conmpanyDesc"];
-    c.discountLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"discountDesc"];
-    [c.imgview setImageWithURL:[self.goodsArray[indexPath.row] objectForKey:@"pic"]];
-    c.locationLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"location"];
-    c.starTimeLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"starTime"];
-    c.endTimeLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"endTime"];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
+    
+    if (indexPath.row < [self.showArray count]) {
+    cell.titleLabel.text = [self.showArray[indexPath.row] objectForKey:@"companyName"];
+    cell.introduceLabel.text = [self.showArray[indexPath.row] objectForKey:@"companyDesc"];
+    cell.discountLabel.text = [self.showArray[indexPath.row] objectForKey:@"discountDesc"];
+        
+//    [cell.imgview setImageWithURL:[self.showArray[indexPath.row] objectForKey:@"pic"]];
+    [cell.imgview setImageWithURL:[[self.showArray[indexPath.row] objectForKey:@"pic"] objectAtIndex:0] placeholderImage:[UIImage imageNamed:@"Default_failLoad.jpg"]];
+        
+    cell.locationLabel.text = [self.showArray[indexPath.row] objectForKey:@"location"];
+    cell.starTimeLabel.text = [self.showArray[indexPath.row] objectForKey:@"starTime"];
+    cell.endTimeLabel.text = [self.showArray[indexPath.row] objectForKey:@"endTime"];
+    }
 
 
     return cell;
@@ -151,19 +192,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-//    GoodsDetailViewController *detailViewController = [[GoodsDetailViewController alloc] initWithNibName:@"PolicyDetailViewController" bundle:nil];
-//    detailViewController.dictForDiscData = self.goodsArray[indexPath.row];
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:self.goodsArray[indexPath.row], @"goods", nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"PUSH_GOODS_DETAIL" object:dict];
+    GoodsDetailViewController *detailViewController = [[GoodsDetailViewController alloc] initWithNibName:@"GoodsDetailViewController" bundle:nil];
+    detailViewController.dictForDiscData = self.showArray[indexPath.row];
+//    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:self.showArray[indexPath.row], @"goods", nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"PUSH_GOODS_DETAIL" object:dict];
     
     // ...
     // Pass the selected object to the new view controller.
-//    UIViewController *NC = [self viewController];
-//    
+    UIViewController *NC = [self viewController];
+//
 //    NSLog(@"%@", NC.navigationController);
-//    [NC.navigationController pushViewController:detailViewController animated:YES];
+    [NC.navigationController pushViewController:detailViewController animated:YES];
 //    [detailViewController release];
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (UIViewController*)viewController {

@@ -53,6 +53,8 @@
 		04E67AFF1808D98600F3C0B9 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E67AF71808D98600F3C0B9 /* UIImageView+WebCache.m */; };
 		04E802EA180AC36500A48BFF /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E802E9180AC36500A48BFF /* ImageIO.framework */; };
 		04E802ED180AC38400A48BFF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E802EC180AC38400A48BFF /* MapKit.framework */; };
+		04E8120A1841677200364559 /* segment_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E812081841677200364559 /* segment_bg.png */; };
+		04E8120B1841677200364559 /* stain.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E812091841677200364559 /* stain.png */; };
 		04E84B4E183CD72700D2B12B /* AsyncImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E84B45183CD72700D2B12B /* AsyncImageDownloader.m */; };
 		04E84B4F183CD72700D2B12B /* ImageCacheQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E84B47183CD72700D2B12B /* ImageCacheQueue.m */; };
 		04E84B50183CD72700D2B12B /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E84B49183CD72700D2B12B /* NSString+MD5.m */; };
@@ -217,6 +219,8 @@
 		04E67AF71808D98600F3C0B9 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		04E802E9180AC36500A48BFF /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		04E802EC180AC38400A48BFF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		04E812081841677200364559 /* segment_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = segment_bg.png; sourceTree = "<group>"; };
+		04E812091841677200364559 /* stain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stain.png; sourceTree = "<group>"; };
 		04E84B44183CD72700D2B12B /* AsyncImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageDownloader.h; sourceTree = "<group>"; };
 		04E84B45183CD72700D2B12B /* AsyncImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageDownloader.m; sourceTree = "<group>"; };
 		04E84B46183CD72700D2B12B /* ImageCacheQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCacheQueue.h; sourceTree = "<group>"; };
@@ -393,6 +397,8 @@
 		0444EA1517D239E4000A3E98 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				04E812081841677200364559 /* segment_bg.png */,
+				04E812091841677200364559 /* stain.png */,
 				04F1D6611833ADFC00E52793 /* call.png */,
 				04FE4309181D768F0070EB2A /* Head.png */,
 				04FE42FB181D72AD0070EB2A /* aboutUs.jpg */,
@@ -844,6 +850,7 @@
 				04EFE27917D981EB00DFE812 /* segment_left_tag@2x.png in Resources */,
 				04EFE27A17D981EB00DFE812 /* segment_middle_item.png in Resources */,
 				04EFE27B17D981EB00DFE812 /* segment_middle_item@2x.png in Resources */,
+				04E8120B1841677200364559 /* stain.png in Resources */,
 				04EFE27C17D981EB00DFE812 /* segment_right_item.png in Resources */,
 				04EFE27D17D981EB00DFE812 /* segment_right_item@2x.png in Resources */,
 				04EFE27E17D981EB00DFE812 /* segment_right_tag.png in Resources */,
@@ -863,6 +870,7 @@
 				04E2F03E180051E70023ED4B /* fetch_mac_ghunit.rb in Resources */,
 				04E2F03F180051E70023ED4B /* set_version_number.rb in Resources */,
 				04EDAF52180307C5000B252A /* ContacetsViewController.xib in Resources */,
+				04E8120A1841677200364559 /* segment_bg.png in Resources */,
 				043A2A871803BFDB00C342E7 /* ContactViewController.xib in Resources */,
 				040034AD1816BCD800DD05C1 /* PolicyDetailViewController.xib in Resources */,
 				0400F9A518179023009322AC /* GoodsDetailViewController.xib in Resources */,

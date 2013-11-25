@@ -122,7 +122,11 @@
     if (cell == nil) {
         cell = [[PolicyCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     PolicyCell *c = (PolicyCell *)cell;
+    
+    if (indexPath.row < [self.policyArray count]) {
     c.policyDes.text = [self.policyArray[indexPath.row] objectForKey:@"policyDesc"];
 //    c.introduceLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"conmpanyDesc"];
 //    c.discountLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"discountDesc"];
@@ -136,7 +140,7 @@
 //    c.starTimeLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"starTime"];
 //    c.endTimeLabel.text = [self.goodsArray[indexPath.row] objectForKey:@"endTime"];
     
-    
+    }
     
     return cell;
 }

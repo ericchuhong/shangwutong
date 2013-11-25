@@ -7,7 +7,7 @@
 //
 
 #import "PolicyDetailViewController.h"
-#import "UIImageView+WebCache.h"
+//#import "UIImageView+WebCache.h"
 #import "UIImageView+OnlineImage.h"
 #import "OnlineImageView.h"
 
@@ -109,11 +109,11 @@
     
 //    [self animateOnEntry];
     
-    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 250, 80, 60)];
-    btn.titleLabel.text = @"return";
-    btn.backgroundColor = [UIColor cyanColor];
-    [btn addTarget:self action:@selector(PopVC) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
+//    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 250, 80, 60)];
+//    btn.titleLabel.text = @"return";
+//    btn.backgroundColor = [UIColor cyanColor];
+//    [btn addTarget:self action:@selector(PopVC) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:btn];
 }
 
 //- (void)animateOnEntry
@@ -135,9 +135,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)PopVC{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+//- (void)PopVC{
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 
 #pragma mark - ScrollView Delegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

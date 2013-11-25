@@ -8,6 +8,9 @@
 
 #import "GoodsDetailViewController.h"
 #import "UIImageView+WebCache.h"
+#import "OnlineImageView.h"
+#import "UIImageView+OnlineImage.h"
+
 
 @interface GoodsDetailViewController ()
 
@@ -39,16 +42,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.companyName.text = [NSString stringWithFormat:@"%@",[self.dictForDiscData objectForKey:@"companyName"]];
-    self.companyDesc.text = [NSString stringWithFormat:@"%@",[self.dictForDiscData objectForKey:@"conmpanyDesc"]];
+    self.companyDesc.text = [NSString stringWithFormat:@"%@",[self.dictForDiscData objectForKey:@"companyDesc"]];
     self.discountDesc.text = [NSString stringWithFormat:@"%@",[self.dictForDiscData objectForKey:@"discountDesc"]];
     self.goodsPicArray = [self.dictForDiscData objectForKey:@"pic"];
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 44+25, 320, 141)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 25, 320, 175)];
     
-    scrollView.backgroundColor = [UIColor redColor];
+    scrollView.backgroundColor = [UIColor clearColor];
     scrollView.pagingEnabled   = YES;
     scrollView.delegate        = self;
-    scrollView.contentSize = CGSizeMake(320*3, 141);
+    scrollView.contentSize = CGSizeMake(320*3, 165);
     scrollView.showsHorizontalScrollIndicator = YES;
     float _x = 0;
     for (int index = 0; index < 3; index++) {
@@ -56,6 +59,8 @@
         //        NSString *imageName = [NSString stringWithFormat:@"image%d",index+1];
         //        imageView.image = [UIImage imageNamed:imageName];
         [imageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[self.goodsPicArray objectAtIndex:index]]]];
+//        [imageView setOnlineImage:[self.goodsPicArray objectAtIndex:index] placeholderImage:[UIImage imageNamed:@"Default_failLoad.jpg"]];
+        [imageView setOnlineImage:[self.goodsPicArray objectAtIndex:index] placeholderImage:[UIImage imageNamed:@"Default_failLoad.jpg"]];
         
         [scrollView addSubview:imageView];
 //        [imageView release];
@@ -66,7 +71,7 @@
     [self.view addSubview:scrollView];
 //    [scrollView release];
     
-    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 184, 320, 30)];
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 184 - 20, 320, 30)];
     
     pageControl.numberOfPages = 3;
     pageControl.tag = 101;

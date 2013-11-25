@@ -10,7 +10,7 @@
 //#import "BFSegmentControl.h"
 #import "GoodsBaseTableView.h"
 #import "BaseViewController.h"
-
+#import "CCSegmentedControl.h"
 
 @interface DetailViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 {

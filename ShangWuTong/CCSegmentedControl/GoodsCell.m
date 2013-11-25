@@ -15,7 +15,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        
         [self initSubviews];
     }
     return self;
@@ -24,31 +24,31 @@
 - (void) initSubviews
 {
     _imgview = [[UIImageView alloc] initWithFrame:CGRectZero];
-    _imgview.backgroundColor = [UIColor yellowColor];
+    _imgview.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_imgview];
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _titleLabel.backgroundColor = [UIColor redColor];
+    _titleLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_titleLabel];
     
     _introduceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _introduceLabel.backgroundColor = [UIColor greenColor];
+    _introduceLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_introduceLabel];
     
     _discountLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _discountLabel.backgroundColor = [UIColor blueColor];
+    _discountLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_discountLabel];
     
     _locationLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _locationLabel.backgroundColor = [UIColor redColor];
+    _locationLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_locationLabel];
 
     _starTimeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _starTimeLabel.backgroundColor = [UIColor blueColor];
+    _starTimeLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_starTimeLabel];
     
     _endTimeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _endTimeLabel.backgroundColor = [UIColor blueColor];
+    _endTimeLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:_endTimeLabel];
     
 }
@@ -66,26 +66,26 @@
     
 //    NSDictionary *contentDic = self._goods_model;
     
-    _imgview.frame = CGRectMake(10, 10, 80, 80);
+    _imgview.frame = CGRectMake(5, 5, 90, 90);
 //    NSString *imgURL = [[contentDic objectForKey:@"images"] objectForKey:@"medium"];
     
     //异步请求图片
 //    [_imgview setImageWithURL:[NSURL URLWithString:imgURL]];
     
-    _titleLabel.frame = CGRectMake(_imgview.right+10, 10, 200, 20);
+    _titleLabel.frame = CGRectMake(_imgview.right+10, 10, 200, 30);
 //    _titleLabel.text = [contentDic objectForKey:@"title"];
     
-    _introduceLabel.frame = CGRectMake(_titleLabel.left, _titleLabel.bottom, _titleLabel.width, 20);
+    _introduceLabel.frame = CGRectMake(_titleLabel.left, _titleLabel.bottom, _titleLabel.width, 30);
 //    _introduceLabel.text = [contentDic objectForKey:@"introduce"];
     
-    _discountLabel.frame = CGRectMake(_titleLabel.left,_introduceLabel.bottom , _titleLabel.width, 20);
+    _discountLabel.frame = CGRectMake(_titleLabel.left,_introduceLabel.bottom , _titleLabel.width, 30);
 //    _discountLabel.text = [contentDic objectForKey:@"discount"];
     
-    _locationLabel.frame = CGRectMake(_titleLabel.left, _discountLabel.bottom, _titleLabel.width, 20);
+//    _locationLabel.frame = CGRectMake(_titleLabel.left, _discountLabel.bottom, _titleLabel.width, 20);
     
-    _starTimeLabel.frame = CGRectMake(_titleLabel.left, _locationLabel.bottom, _titleLabel.width/2, 20);
+//    _starTimeLabel.frame = CGRectMake(_titleLabel.left, _locationLabel.bottom, _titleLabel.width/2, 20);
     
-    _endTimeLabel.frame = CGRectMake(_starTimeLabel.right, _locationLabel.bottom, _titleLabel.width/2, 20);
+//    _endTimeLabel.frame = CGRectMake(_starTimeLabel.right, _locationLabel.bottom, _titleLabel.width/2, 20);
 }
 
 //- (void)dealloc

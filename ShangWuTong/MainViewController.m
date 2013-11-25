@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "HomeViewController.h"
+#import "DetailViewController.h"
 #import "PolicyViewController.h"
 #import "ContactViewController.h"
 #import "MoreViewController.h"
@@ -44,7 +45,7 @@
 
 //初始化子控制器
 - (void)_initViewController {
-    HomeViewController *home = [[HomeViewController alloc] init];
+    DetailViewController *home = [[DetailViewController alloc] init];
     PolicyViewController *policy = [[PolicyViewController alloc] initWithNibName:@"PolicyViewController" bundle:nil];
     ContactViewController *group = [[ContactViewController alloc] init];
     MoreViewController *more = [[MoreViewController alloc] init];
