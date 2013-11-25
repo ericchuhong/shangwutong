@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) NSString *groupNumKey;
 @property (nonatomic, strong) __block ASIHTTPRequest    *request;
+@property (nonatomic, strong) __block ASIHTTPRequest    *checkRequest;
+@property (nonatomic, strong) NSMutableDictionary *checkDict;
 
 @property (strong, nonatomic) IBOutlet UITextField *NumberTextField;
 @property (strong, nonatomic) IBOutlet UITextField *PassWordTextField;

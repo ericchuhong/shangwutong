@@ -12,6 +12,8 @@
 #import "ContacetsViewController.h"
 
 #define GROUP_HOST @"http://124.160.73.170/ecommerce/webService/apiGroupNumLogin?groupId=1&phone=%@&password=%@"
+#define CONTACTS_HOST @"http://124.160.73.170/ecommerce/webService/apiGroupNums?phone=%@&groupId=1&groupNumKey=%@"
+
 
 @implementation ContactViewController
 @synthesize NumberTextField;
@@ -152,11 +154,14 @@
             [ContactsModel setPhone:self.NumberTextField.text andPhonePassword:self.PassWordTextField.text];
 //            [ContactsModel setUK:[[dic objectForKey:@"user"] objectForKey:@"userKey"]];
             [ContactsModel setGNK:[[dic objectForKey:@"groupNum"] objectForKey:@"groupNumKey"]];
-            ContacetsViewController *contactVC = [[ContacetsViewController alloc] init];
+            
+            NSString *phone = [ContactsModel getPhone];
+            NSString *GNK = [ContactsModel getGNK];
+            
+            NSString *contactsHost = [NSString stringWithFormat:CONTACTS_HOST,phone,GNK];
+            [self checkContactDatawithURL:contactsHost];
             
             
-            
-            [self.navigationController pushViewController:contactVC animated:YES];
 //            [contactVC release];-fno-objc-arc
         }
         
@@ -179,6 +184,49 @@
 {
     [ContactsModel SavePassword:self.passwdSwitch.on];
 
+}
+
+- (void)checkContactDatawithURL:(NSString *)url
+{
+    NSLog(@"start");
+    
+    __weak typeof(self) weakSelf = self;
+    
+    self.checkRequest = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    //    NSLog(@"%@",url);
+    [weakSelf.checkRequest setCompletionBlock:^{
+        self.checkDict = [NSJSONSerialization JSONObjectWithData:[self.checkRequest responseData] options:NSJSONReadingMutableContainers error:nil];
+        /* NSLog(@"%@",[[self.contactsDict objectForKey:@"discount"][0] objectForKey:@"name"]);
+         self.contactsArray = [NSMutableArray arrayWithArray:[self.contactsDict objectForKey:@"discount"]];*/
+        NSString *result = [NSString stringWithString:[[self.checkDict objectForKey:@"flag"] stringValue]];
+        if ([result isEqualToString:@"-1"]) {
+            //   未知错误
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未知错误" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil];
+            [alert show];
+        }else if ([result isEqualToString:@"-7"]) {
+            // 用户名不正确
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"通讯录服务异常，请重新登陆" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil];
+            [alert show];
+        }else if ([result isEqualToString:@"-2"]) {
+            // 用户名不正确
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"缺少必要信息" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil];
+            [alert show];
+        }else if ([result isEqualToString:@"-6"]) {
+            // 用户名不正确
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"不存在" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil];
+            [alert show];
+        }else {
+            ContacetsViewController *contactVC = [[ContacetsViewController alloc] init];
+
+            [self.navigationController pushViewController:contactVC animated:YES];
+        }
+    }];
+    
+    [weakSelf.checkRequest setFailedBlock:^{
+        NSLog(@"failed %d",[self.request responseStatusCode]);
+    }];
+    [self.checkRequest startAsynchronous];
+    
 }
 
 @end
