@@ -24,6 +24,6 @@
 @property (nonatomic, strong) NSMutableDictionary    *policyDict;
 @property (nonatomic, strong) NSMutableArray        *policyArray;
 
-- (void)loadPolicyDataWithURL:(NSString *)url;
+//- (void)loadPolicyDataWithURL:(NSString *)url;
 
 @end

@@ -12,7 +12,7 @@
 #import "BaseViewController.h"
 #import "CCSegmentedControl.h"
 
-@interface DetailViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@interface DetailViewController : BaseViewController/*<UITableViewDataSource,UITableViewDelegate>*/
 {
 //    NSArray *categoryArray;
     

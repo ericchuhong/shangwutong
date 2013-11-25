@@ -11,5 +11,5 @@
 @interface ShangWuTongNetworkService : NSObject
 
 //get all goods data
-+ (id)allGoodsData;
+//+ (id)allGoodsData;
 @end

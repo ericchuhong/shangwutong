@@ -93,12 +93,13 @@
 - (void)loadDataWithURL:(NSString *)url {
     NSLog(@"start");
 //    [NSUserDefaults standardUserDefaults];
-    
+    __weak typeof(self) weakSelf = self;
+
     self.request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [self.request setCompletionBlock:^{
         
-    self.goodsDict = [NSJSONSerialization JSONObjectWithData:[self.request responseData] options:NSJSONReadingMutableContainers error:nil];
-        NSString *result = [NSString stringWithString:[[self.goodsDict objectForKey:@"flag"] stringValue]];
+    weakSelf.goodsDict = [NSJSONSerialization JSONObjectWithData:[weakSelf.request responseData] options:NSJSONReadingMutableContainers error:nil];
+        NSString *result = [NSString stringWithString:[[weakSelf.goodsDict objectForKey:@"flag"] stringValue]];
         if ([result isEqualToString:@"-1"]) {
             //   未知错误
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未知错误" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil];
@@ -119,18 +120,18 @@
             
         
 
-        self.goodsArray = [NSMutableArray arrayWithArray:[self.goodsDict objectForKey:@"discount"]];
+        weakSelf.goodsArray = [NSMutableArray arrayWithArray:[weakSelf.goodsDict objectForKey:@"discount"]];
         
         
-        self.showArray = [self.goodsArray mutableCopy];
-            if (self.tag != kAllGoodsTag) {
-                [self reloadDataWithArray];
+        weakSelf.showArray = [weakSelf.goodsArray mutableCopy];
+            if (weakSelf.tag != kAllGoodsTag) {
+                [weakSelf reloadDataWithArray];
             }
         
-        [self.goodsTableView reloadData];
+        [weakSelf.goodsTableView reloadData];
         }
     }];
-    [self.request setFailedBlock:^{
+    [weakSelf.request setFailedBlock:^{
         NSLog(@"failed %d", [self.request responseStatusCode]);
     }];
     [self.request startAsynchronous];

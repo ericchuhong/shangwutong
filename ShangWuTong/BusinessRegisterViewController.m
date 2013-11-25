@@ -52,10 +52,13 @@
                       password:(NSString *)password
 {
     NSString *url = [NSString stringWithFormat:REGIST_HOST,userNick,password];
+    
+    __weak typeof(self) weakSelf = self;
+
     self.request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [self.request setCompletionBlock:^{
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        dic = [NSJSONSerialization JSONObjectWithData:[self.request responseData] options:NSJSONReadingAllowFragments error:nil];
+        dic = [NSJSONSerialization JSONObjectWithData:[weakSelf.request responseData] options:NSJSONReadingAllowFragments error:nil];
         NSString *flag = [NSString stringWithString:[dic objectForKey:@"flag"]];
         if ([flag isEqualToString:@"-1"]) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未知错误" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil];
@@ -71,17 +74,17 @@
         }else
         {
             NSLog(@"Login result is:%@",flag);
-            [GoodsModel setUserNick:self.CustomerUsername.text andPassword:self.CustomerPassword.text];
+            [GoodsModel setUserNick:weakSelf.CustomerUsername.text andPassword:weakSelf.CustomerPassword.text];
             [GoodsModel setUK:[[dic objectForKey:@"user"] objectForKey:@"userKey"]];
             DetailViewController *detailVC = [[DetailViewController alloc] init];
-            [self.navigationController pushViewController:detailVC animated:YES];
+            [weakSelf.navigationController pushViewController:detailVC animated:YES];
 //            [detailVC release];
         }
         
     }];
     
     [self.request setFailedBlock:^{
-        NSLog(@"Failed %d",[self.request responseStatusCode]);
+        NSLog(@"Failed %d",[weakSelf.request responseStatusCode]);
     }];
     [self.request startAsynchronous];
 }

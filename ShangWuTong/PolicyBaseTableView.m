@@ -60,12 +60,16 @@
 - (void)loadDataWithPolicyURL:(NSString *)url {
     NSLog(@"start");
     //    [NSUserDefaults standardUserDefaults];
-    
+    __weak typeof(self) weakSelf = self;
+
     self.policyRequest = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
+//    __weak id SELF = self;
     [self.policyRequest setCompletionBlock:^{
-        
-        _policyDict = [NSJSONSerialization JSONObjectWithData:[_policyRequest responseData] options:NSJSONReadingMutableContainers error:nil];
-        NSString *result = [NSString stringWithString:[[self.policyDict objectForKey:@"flag"]stringValue]];
+//        id strongSelf = SELF;
+//        [strongSelf loadDataWithPolicyURL:url];
+
+        weakSelf.policyDict = [NSJSONSerialization JSONObjectWithData:[weakSelf.policyRequest responseData] options:NSJSONReadingMutableContainers error:nil];
+        NSString *result = [NSString stringWithString:[[weakSelf.policyDict objectForKey:@"flag"]stringValue]];
         if ([result isEqualToString:@"-1"]) {
             //   未知错误
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未知错误" delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil];
@@ -82,17 +86,17 @@
             
             
             
-            self.policyArray = [NSMutableArray arrayWithArray:[self.policyDict objectForKey:@"policy"]];
+            weakSelf.policyArray = [NSMutableArray arrayWithArray:[weakSelf.policyDict objectForKey:@"policy"]];
             
             
-            self.policyArray = [NSMutableArray arrayWithArray:self.policyArray];
+            weakSelf.policyArray = [NSMutableArray arrayWithArray:weakSelf.policyArray];
             
             
-            [self.policyTableView reloadData];
+            [weakSelf.policyTableView reloadData];
         }
     }];
     [self.policyRequest setFailedBlock:^{
-        NSLog(@"%s line:%d failed  = %d", __FUNCTION__, __LINE__, [self.policyRequest responseStatusCode]);
+        NSLog(@"%s line:%d failed  = %d", __FUNCTION__, __LINE__, [weakSelf.policyRequest responseStatusCode]);
     }];
     [self.policyRequest startAsynchronous];
 }

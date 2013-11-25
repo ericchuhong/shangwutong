@@ -130,9 +130,12 @@
 - (void)goodsLoginWithUserNick:(NSString *)userNick
                       password:(NSString *)password
 {
+    // debug for solve the warning "capturing self strongly in this block is likely to lead to a retain cycle"
+    __weak typeof(self) weakSelf = self;
+    
     NSString *url = [NSString stringWithFormat:LOGIN_HOST,userNick,password];
     self.request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
-    [self.request setCompletionBlock:^{
+    [weakSelf.request setCompletionBlock:^{
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
 
         dic = [NSJSONSerialization JSONObjectWithData:[self.request responseData] options:NSJSONReadingAllowFragments error:nil];
@@ -155,7 +158,7 @@
         
         
     }];
-    [self.request setFailedBlock:^{
+    [weakSelf.request setFailedBlock:^{
         NSLog(@"Failed %d",[self.request responseStatusCode]);
     }];
     [self.request startAsynchronous];

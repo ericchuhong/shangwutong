@@ -13,7 +13,7 @@
 		0400F9A518179023009322AC /* GoodsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0400F9A318179023009322AC /* GoodsDetailViewController.xib */; };
 		0401E5EA182E19B0003779E4 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E5E1182E19B0003779E4 /* FMDatabase.m */; };
 		0401E5EB182E19B0003779E4 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E5E3182E19B0003779E4 /* FMDatabaseAdditions.m */; };
-		0401E5EC182E19B0003779E4 /* FMDatabasePool.m -fno-objc-arc in Sources */ = {isa = PBXBuildFile; fileRef = 0401E5E5182E19B0003779E4 /* FMDatabasePool.m -fno-objc-arc */; };
+		0401E5EC182E19B0003779E4 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E5E5182E19B0003779E4 /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0401E5ED182E19B0003779E4 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E5E7182E19B0003779E4 /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0401E5EE182E19B0003779E4 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E5E9182E19B0003779E4 /* FMResultSet.m */; };
 		04229F4C183BABE500433655 /* CCSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 04229F4B183BABE500433655 /* CCSegmentedControl.m */; };
@@ -143,7 +143,7 @@
 		0401E5E2182E19B0003779E4 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
 		0401E5E3182E19B0003779E4 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
 		0401E5E4182E19B0003779E4 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
-		0401E5E5182E19B0003779E4 /* FMDatabasePool.m -fno-objc-arc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "FMDatabasePool.m -fno-objc-arc"; sourceTree = "<group>"; };
+		0401E5E5182E19B0003779E4 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
 		0401E5E6182E19B0003779E4 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
 		0401E5E7182E19B0003779E4 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		0401E5E8182E19B0003779E4 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
@@ -358,7 +358,7 @@
 				0401E5E2182E19B0003779E4 /* FMDatabaseAdditions.h */,
 				0401E5E3182E19B0003779E4 /* FMDatabaseAdditions.m */,
 				0401E5E4182E19B0003779E4 /* FMDatabasePool.h */,
-				0401E5E5182E19B0003779E4 /* FMDatabasePool.m -fno-objc-arc */,
+				0401E5E5182E19B0003779E4 /* FMDatabasePool.m */,
 				0401E5E6182E19B0003779E4 /* FMDatabaseQueue.h */,
 				0401E5E7182E19B0003779E4 /* FMDatabaseQueue.m */,
 				0401E5E8182E19B0003779E4 /* FMResultSet.h */,
@@ -909,7 +909,7 @@
 				04E48E8917E6C8FA00D68807 /* BussinessLoginViewController.m in Sources */,
 				04E84B52183CD72700D2B12B /* UIImageView+OnlineImage.m in Sources */,
 				04229F4C183BABE500433655 /* CCSegmentedControl.m in Sources */,
-				0401E5EC182E19B0003779E4 /* FMDatabasePool.m -fno-objc-arc in Sources */,
+				0401E5EC182E19B0003779E4 /* FMDatabasePool.m in Sources */,
 				04F96AF917E6E83A00338BF9 /* ShangWuTongNetworkService.m in Sources */,
 				04F96AFF17E6E8C300338BF9 /* GoodsModel.m in Sources */,
 				04F96B2B17E6EC3800338BF9 /* UIViewExt.m in Sources */,

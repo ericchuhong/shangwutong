@@ -126,9 +126,12 @@
 - (void)goodsLoginWithPhone:(NSString *)phone
                       phonePassword:(NSString *)phonePassword
 {
+    //修改出现的错误capturing self strongly in this block is likely to lead to a retain cycle
+    __weak typeof(self) weakSelf = self;
+    
     NSString *url = [NSString stringWithFormat:GROUP_HOST,phone,phonePassword];
     self.request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
-    [self.request setCompletionBlock:^{
+    [weakSelf.request setCompletionBlock:^{
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         
         dic = [NSJSONSerialization JSONObjectWithData:[self.request responseData] options:NSJSONReadingAllowFragments error:nil];
@@ -150,13 +153,16 @@
 //            [ContactsModel setUK:[[dic objectForKey:@"user"] objectForKey:@"userKey"]];
             [ContactsModel setGNK:[[dic objectForKey:@"groupNum"] objectForKey:@"groupNumKey"]];
             ContacetsViewController *contactVC = [[ContacetsViewController alloc] init];
+            
+            
+            
             [self.navigationController pushViewController:contactVC animated:YES];
 //            [contactVC release];-fno-objc-arc
         }
         
         
     }];
-    [self.request setFailedBlock:^{
+    [weakSelf.request setFailedBlock:^{
         NSLog(@"Failed %d",[self.request responseStatusCode]);
     }];
     [self.request startAsynchronous];

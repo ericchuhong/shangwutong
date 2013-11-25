@@ -109,10 +109,11 @@
 {
     NSLog(@"start");
 
-   
+    __weak typeof(self) weakSelf = self;
+
     self.request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
 //    NSLog(@"%@",url);
-    [self.request setCompletionBlock:^{
+    [weakSelf.request setCompletionBlock:^{
         self.contactsDict = [NSJSONSerialization JSONObjectWithData:[self.request responseData] options:NSJSONReadingMutableContainers error:nil];
        /* NSLog(@"%@",[[self.contactsDict objectForKey:@"discount"][0] objectForKey:@"name"]);
         self.contactsArray = [NSMutableArray arrayWithArray:[self.contactsDict objectForKey:@"discount"]];*/
@@ -165,7 +166,7 @@
         }
     }];
     
-    [self.request setFailedBlock:^{
+    [weakSelf.request setFailedBlock:^{
         NSLog(@"failed %d",[self.request responseStatusCode]);
     }];
     [self.request startAsynchronous];
@@ -301,13 +302,16 @@
 //保存搜索结果
 - (void)contactsSearchWithText:(NSString *)searchText
 {
+    //capturing self strongly in this block is likely to lead to a retain cycle
+    __weak typeof(self) weakSelf = self;
+
     NSString *phone = [ContactsModel getPhone];
     NSString *GNK = [ContactsModel getGNK];
     
     NSString *url = [NSString stringWithFormat:CONTACTSSEARCH_HOST,phone,GNK,searchText];
 
     self.researchRequest = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
-    [self.researchRequest  setCompletionBlock:^{
+    [weakSelf.researchRequest  setCompletionBlock:^{
         self.searchContactsDic = [NSJSONSerialization JSONObjectWithData:[self.request responseData] options:NSJSONReadingMutableContainers error:nil];
         NSString *result = [NSString stringWithString:[self.searchContactsDic objectForKey:@"flag"]];
         if ([result isEqualToString:@"-1"]) {
@@ -338,7 +342,7 @@
             [self.tableView reloadData];}
     }];
     
-    [self.researchRequest  setFailedBlock:^{
+    [weakSelf.researchRequest  setFailedBlock:^{
         NSLog(@"failed %d",[self.request responseStatusCode]);
         NSLog(@"%s line:%d failed:%d", __FUNCTION__, __LINE__, [self.researchRequest responseStatusCode]);
     }];
