@@ -60,6 +60,11 @@
 		04E84B50183CD72700D2B12B /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E84B49183CD72700D2B12B /* NSString+MD5.m */; };
 		04E84B51183CD72700D2B12B /* OnlineImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E84B4B183CD72700D2B12B /* OnlineImageView.m */; };
 		04E84B52183CD72700D2B12B /* UIImageView+OnlineImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E84B4D183CD72700D2B12B /* UIImageView+OnlineImage.m */; };
+		04E85A521844CA7100D3AC04 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E85A501844CA7100D3AC04 /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		04E85A531844CA7100D3AC04 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 04E85A511844CA7100D3AC04 /* README.md */; };
+		04E85A571844D4DE00D3AC04 /* tabBarPolicy.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E85A561844D4DE00D3AC04 /* tabBarPolicy.png */; };
+		04E85A591844D71F00D3AC04 /* TabBar_Policy_20.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E85A581844D71F00D3AC04 /* TabBar_Policy_20.png */; };
+		04E85A5B1844D83B00D3AC04 /* TabBar_Policy_30.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E85A5A1844D83B00D3AC04 /* TabBar_Policy_30.png */; };
 		04EAA64E180991F200EBC307 /* GoodsBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EAA64D180991F200EBC307 /* GoodsBaseTableView.m */; };
 		04ED60F717CE1B8300A51822 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED60F617CE1B8300A51822 /* UIKit.framework */; };
 		04ED60F917CE1B8300A51822 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED60F817CE1B8300A51822 /* Foundation.framework */; };
@@ -231,6 +236,12 @@
 		04E84B4B183CD72700D2B12B /* OnlineImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineImageView.m; sourceTree = "<group>"; };
 		04E84B4C183CD72700D2B12B /* UIImageView+OnlineImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+OnlineImage.h"; sourceTree = "<group>"; };
 		04E84B4D183CD72700D2B12B /* UIImageView+OnlineImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+OnlineImage.m"; sourceTree = "<group>"; };
+		04E85A4F1844CA7100D3AC04 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
+		04E85A501844CA7100D3AC04 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
+		04E85A511844CA7100D3AC04 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		04E85A561844D4DE00D3AC04 /* tabBarPolicy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBarPolicy.png; sourceTree = "<group>"; };
+		04E85A581844D71F00D3AC04 /* TabBar_Policy_20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBar_Policy_20.png; sourceTree = "<group>"; };
+		04E85A5A1844D83B00D3AC04 /* TabBar_Policy_30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBar_Policy_30.png; sourceTree = "<group>"; };
 		04EAA64C180991F200EBC307 /* GoodsBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsBaseTableView.h; sourceTree = "<group>"; };
 		04EAA64D180991F200EBC307 /* GoodsBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsBaseTableView.m; sourceTree = "<group>"; };
 		04ED60F217CE1B8300A51822 /* ShangWuTong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShangWuTong.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -408,6 +419,9 @@
 				04FE42FF181D72AD0070EB2A /* More.png */,
 				04FE4300181D72AD0070EB2A /* Phone.png */,
 				04FE4301181D72AD0070EB2A /* Policy.png */,
+				04E85A561844D4DE00D3AC04 /* tabBarPolicy.png */,
+				04E85A581844D71F00D3AC04 /* TabBar_Policy_20.png */,
+				04E85A5A1844D83B00D3AC04 /* TabBar_Policy_30.png */,
 				04EFBEAC181B781F004D8FEF /* pic */,
 				04EFE28817D981F000DFE812 /* SegmentImage */,
 				04F1220117D24BCA0028507F /* 1.png */,
@@ -552,6 +566,16 @@
 			);
 			name = OnlineImageView;
 			path = fmdb/OnlineImageView;
+			sourceTree = "<group>";
+		};
+		04E85A4E1844CA7100D3AC04 /* iToast */ = {
+			isa = PBXGroup;
+			children = (
+				04E85A4F1844CA7100D3AC04 /* iToast.h */,
+				04E85A501844CA7100D3AC04 /* iToast.m */,
+				04E85A511844CA7100D3AC04 /* README.md */,
+			);
+			path = iToast;
 			sourceTree = "<group>";
 		};
 		04ED60E717CE1B8300A51822 = {
@@ -746,6 +770,7 @@
 		04F96B0017E6EC1800338BF9 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				04E85A4E1844CA7100D3AC04 /* iToast */,
 				04E84B43183CD72700D2B12B /* OnlineImageView */,
 				0401E5DD182E19B0003779E4 /* fmdb */,
 				04E67AE31808D98600F3C0B9 /* SDWebImage */,
@@ -829,12 +854,14 @@
 				04ED610917CE1B8300A51822 /* Default.png in Resources */,
 				04ED610B17CE1B8300A51822 /* Default@2x.png in Resources */,
 				04ED610D17CE1B8300A51822 /* Default-568h@2x.png in Resources */,
+				04E85A5B1844D83B00D3AC04 /* TabBar_Policy_30.png in Resources */,
 				04F8AE6517CE28A0004E9E83 /* HomeViewController.xib in Resources */,
 				04F8AE6A17CE2A11004E9E83 /* PolicyViewController.xib in Resources */,
 				04F8AE6F17CE2AFD004E9E83 /* GroupViewController.xib in Resources */,
 				0444EA1317D239D8000A3E98 /* head_background.png in Resources */,
 				04F1220A17D24BCB0028507F /* 1.png in Resources */,
 				04F1220B17D24BCB0028507F /* 2.png in Resources */,
+				04E85A571844D4DE00D3AC04 /* tabBarPolicy.png in Resources */,
 				04F1220C17D24BCB0028507F /* 3.png in Resources */,
 				04F1220D17D24BCB0028507F /* 4.png in Resources */,
 				04F1220E17D24BCB0028507F /* 5.png in Resources */,
@@ -855,6 +882,7 @@
 				04EFE27D17D981EB00DFE812 /* segment_right_item@2x.png in Resources */,
 				04EFE27E17D981EB00DFE812 /* segment_right_tag.png in Resources */,
 				04EFE27F17D981EB00DFE812 /* segment_right_tag@2x.png in Resources */,
+				04E85A591844D71F00D3AC04 /* TabBar_Policy_20.png in Resources */,
 				04EFE28017D981EB00DFE812 /* segment_selected_new.png in Resources */,
 				04EFE28117D981EB00DFE812 /* segment_selected_new@2x.png in Resources */,
 				04EFE28217D981EB00DFE812 /* segment_selected-grip.png in Resources */,
@@ -867,6 +895,7 @@
 				04E48E8417E6C89D00D68807 /* BusinessRegisterViewController.xib in Resources */,
 				04E48E8B17E6C90600D68807 /* BussinessLoginViewController.xib in Resources */,
 				04E2F03D180051E70023ED4B /* fetch_ios_ghunit.rb in Resources */,
+				04E85A531844CA7100D3AC04 /* README.md in Resources */,
 				04E2F03E180051E70023ED4B /* fetch_mac_ghunit.rb in Resources */,
 				04E2F03F180051E70023ED4B /* set_version_number.rb in Resources */,
 				04EDAF52180307C5000B252A /* ContacetsViewController.xib in Resources */,
@@ -901,6 +930,7 @@
 				04229F4F183BACAF00433655 /* GoodsCell.m in Sources */,
 				04E84B51183CD72700D2B12B /* OnlineImageView.m in Sources */,
 				04F8AE6917CE2A11004E9E83 /* PolicyViewController.m in Sources */,
+				04E85A521844CA7100D3AC04 /* iToast.m in Sources */,
 				04F8AE6E17CE2AFD004E9E83 /* GroupViewController.m in Sources */,
 				04F8AE7517CE3590004E9E83 /* MainViewController.m in Sources */,
 				042CD2AD17D2DEB100F8D40B /* DetailViewController.m in Sources */,

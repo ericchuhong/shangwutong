@@ -9,7 +9,7 @@
 #import "ContactsCell.h"
 
 #define LABEL_HEIGHT 20
-#define LABEL_WIDTH 150
+#define LABEL_WIDTH 180
 
 @implementation ContactsCell
 
@@ -26,7 +26,7 @@
 - (void)initContactSubviews
 {
     _backgroundImg = [[UIImageView alloc] initWithFrame:CGRectZero];
-    _backgroundImg.backgroundColor = [UIColor grayColor];
+    _backgroundImg.backgroundColor = [UIColor colorWithRed:173/255.0 green:216/255.0 blue:230/255.0 alpha:1.0];
     [self.contentView addSubview:_backgroundImg];
     
     _companyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -63,7 +63,9 @@
 {
     [super layoutSubviews];
     
-    _companyLabel.frame = CGRectMake(80, 10, LABEL_WIDTH, LABEL_HEIGHT);
+    _backgroundImg.frame = CGRectMake(30, 5, 240, 90);
+    
+    _companyLabel.frame = CGRectMake(40, 10, LABEL_WIDTH, LABEL_HEIGHT);
     
     _departmentLabel.frame = CGRectMake(_companyLabel.left, _companyLabel.top+20, LABEL_WIDTH, LABEL_HEIGHT);
     
@@ -71,7 +73,7 @@
     
     _telLabel.frame = CGRectMake(_companyLabel.left, _salerNameLabel.top+20, LABEL_WIDTH, LABEL_HEIGHT);
     
-    _phoneBtn.frame = CGRectMake(_companyLabel.right, _companyLabel.top+2.5, 80 , 80);
+    _phoneBtn.frame = CGRectMake(_companyLabel.right, _companyLabel.top, 80 , 80);
     
     [_phoneBtn setImage:[UIImage imageNamed:@"call"] forState:UIControlStateNormal];
 

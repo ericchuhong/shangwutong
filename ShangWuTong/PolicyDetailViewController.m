@@ -7,7 +7,7 @@
 //
 
 #import "PolicyDetailViewController.h"
-//#import "UIImageView+WebCache.h"
+#import "UIImageView+WebCache.h"
 #import "UIImageView+OnlineImage.h"
 #import "OnlineImageView.h"
 
@@ -72,6 +72,7 @@
       
 //        NSString *imageName = [NSString stringWithFormat:@"image%d",index+1];
 //        imageView.image = [UIImage imageNamed:imageName];
+
 //        [imageView setImageWithURL:[NSURL URLWithString:[self.policyPicArray objectAtIndex:index]]];
 
         [imageView setOnlineImage:[self.policyPicArray objectAtIndex:index] placeholderImage:[UIImage imageNamed:@"Default_failLoad.jpg"]];

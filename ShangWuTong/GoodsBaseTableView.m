@@ -12,6 +12,7 @@
 #import "GoodsDetailViewController.h"
 #import "OnlineImageView.h"
 #import "UIImageView+OnlineImage.h"
+#import "iToast.h"
 
 #define kAllGoodsTag 101
 #define kEatingGoodsTag 102
@@ -93,6 +94,7 @@
 - (void)loadDataWithURL:(NSString *)url {
     NSLog(@"start");
 //    [NSUserDefaults standardUserDefaults];
+   
     __weak typeof(self) weakSelf = self;
 
     self.request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:url]];
@@ -133,6 +135,8 @@
     }];
     [weakSelf.request setFailedBlock:^{
         NSLog(@"failed %d", [self.request responseStatusCode]);
+        [[[[iToast makeText:@"网络异常，请稍后重试"] setGravity:iToastGravityBottom] setDuration:iToastDurationShort] show];
+        NSLog(@"%s line:%d ", __FUNCTION__, __LINE__);
     }];
     [self.request startAsynchronous];
     

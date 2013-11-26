@@ -9,6 +9,7 @@
 #import "ContacetsViewController.h"
 #import "ContactsCell.h"
 #import "ContactsModel.h"
+#import "iToast.h"
 
 
 #define CONTACTS_HOST @"http://124.160.73.170/ecommerce/webService/apiGroupNums?phone=%@&groupId=1&groupNumKey=%@"
@@ -34,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [[[[iToast makeText:@"登陆成功"] setGravity:iToastGravityBottom] setDuration:iToastDurationShort] show];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -42,6 +43,8 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.separatorStyle = NO;
+    self.searchBar.placeholder = @"请输入联系人姓名或单位或电话号码";
     
     NSString *phone = [ContactsModel getPhone];
     NSString *GNK = [ContactsModel getGNK];
@@ -196,6 +199,9 @@
         cell = [[ContactsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    
     // Configure the cell...
     
 //    if (self.showContacts != nil && self.showContacts.count >0){
@@ -205,18 +211,25 @@
     if (indexPath.row < [self.showContacts count]) {
         
     
-        cell.companyLabel.text = [NSString stringWithFormat:@"公司:%@",[self.showContacts[indexPath.row] objectForKey:@"companyName"]];
+        cell.companyLabel.text = [NSString stringWithFormat:@"单位名称:%@",[self.showContacts[indexPath.row] objectForKey:@"companyName"]];
         cell.companyLabel.textColor = [UIColor blackColor];
+        cell.companyLabel.font = [UIFont fontWithName:@"Arial" size:15];
 
         
-        cell.telLabel.text = [NSString stringWithFormat:@"电话:%@",[self.showContacts[indexPath.row] objectForKey:@"phone"]];
+        cell.telLabel.text = [NSString stringWithFormat:@"电       话:%@",[self.showContacts[indexPath.row] objectForKey:@"phone"]];
         cell.telLabel.textColor = [UIColor blackColor];
+        cell.telLabel.font = [UIFont fontWithName:@"Arial" size:15];
+
         
-        cell.salerNameLabel.text = [NSString stringWithFormat:@"姓名:%@",[self.showContacts[indexPath.row] objectForKey:@"name"]];
+        cell.salerNameLabel.text = [NSString stringWithFormat:@"姓       名:%@",[self.showContacts[indexPath.row] objectForKey:@"name"]];
         cell.salerNameLabel.textColor = [UIColor blackColor];
+        cell.salerNameLabel.font = [UIFont fontWithName:@"Arial" size:15];
+
         
-        cell.departmentLabel.text = [NSString stringWithFormat:@"部门:%@",[self.showContacts[indexPath.row] objectForKey:@"department"]];
+        cell.departmentLabel.text = [NSString stringWithFormat:@"部       门:%@",[self.showContacts[indexPath.row] objectForKey:@"department"]];
         cell.departmentLabel.textColor = [UIColor blackColor];
+        cell.departmentLabel.font = [UIFont fontWithName:@"Arial" size:15];
+
         
         [cell.phoneBtn addTarget:self action:@selector(callThePhone: event:) forControlEvents:UIControlEventTouchUpInside];
     }

@@ -10,6 +10,7 @@
 #import "PolicyCell.h"
 #import "UIImageView+WebCache.h"
 #import "PolicyDetailViewController.h"
+#import "iToast.h"
 
 #define kAllGoodsTag 101
 #define kEatingGoodsTag 102
@@ -97,6 +98,7 @@
     }];
     [self.policyRequest setFailedBlock:^{
         NSLog(@"%s line:%d failed  = %d", __FUNCTION__, __LINE__, [weakSelf.policyRequest responseStatusCode]);
+        [[[[iToast makeText:@"网络异常，请稍后重试"] setGravity:iToastGravityBottom] setDuration:iToastDurationShort] show];
     }];
     [self.policyRequest startAsynchronous];
 }
