@@ -12,9 +12,9 @@
 
 @property (nonatomic,retain)NSMutableArray *goodsPicArray;
 @property (nonatomic,retain)IBOutlet UILabel *companyName;
-@property (nonatomic,retain)IBOutlet UILabel *companyDesc;
-@property (nonatomic,retain)IBOutlet UILabel *discountDesc;
-@property (nonatomic,retain)IBOutlet UIImageView *bgImage;
+@property (nonatomic,retain)UILabel *companyDesc;
+@property (nonatomic,retain)UILabel *discountDesc;
+@property (nonatomic,retain)UIImageView *seprateImg;
 
 @property (nonatomic,retain) NSMutableDictionary *dictForDiscData;
 

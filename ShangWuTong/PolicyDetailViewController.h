@@ -12,7 +12,7 @@
 
 @property (nonatomic,retain)NSMutableArray *policyPicArray;
 @property (nonatomic,retain)IBOutlet UILabel *policyLableType;
-@property (nonatomic,retain)IBOutlet UILabel *policyLableDetail;
+@property (nonatomic,retain)UILabel *policyLableDetail;
 @property (nonatomic,retain)IBOutlet UIImageView *imgView;
 
 

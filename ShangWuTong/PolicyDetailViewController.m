@@ -46,8 +46,21 @@
     
     self.policyLableType.text = [NSString stringWithFormat:@"%@",[self.dictForPolicyData objectForKey:@"policyName"]];
     self.policyPicArray = [self.dictForPolicyData objectForKey:@"pic"];
-    self.policyLableDetail.text = [NSString stringWithFormat:@"%@",[self.dictForPolicyData objectForKey:@"policyDesc"]];
+    NSLog(@"%@",[self.dictForPolicyData objectForKey:@"policyDesc"]);
     
+    //政策详情
+    self.policyLableDetail = [[UILabel alloc] init];
+    self.policyLableDetail.text = [NSString stringWithFormat:@"%@",[self.dictForPolicyData objectForKey:@"policyDesc"]];
+    NSLog(@"%@",self.policyLableDetail.text);
+    self.policyLableDetail.lineBreakMode = NSLineBreakByWordWrapping;
+    self.policyLableDetail.numberOfLines = 0;
+    self.policyLableDetail.backgroundColor = [UIColor lightGrayColor];
+    CGSize size = CGSizeMake(320, 2000);
+    CGSize labelSize = [self.policyLableDetail.text sizeWithFont:self.policyLableDetail.font constrainedToSize:size lineBreakMode:NSLineBreakByWordWrapping];
+    self.policyLableDetail.frame = CGRectMake(0, 200, labelSize.width, labelSize.height);
+    [self.view addSubview:self.policyLableDetail];
+    
+    //滚动相片
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 25, 320, 175)];
     
     scrollView.backgroundColor = [UIColor clearColor];

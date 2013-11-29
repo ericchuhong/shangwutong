@@ -10,6 +10,4 @@
 
 @interface MoreViewController : BaseViewController
 
-@property (nonatomic,strong) IBOutlet UIImageView *background;
-
 @end
