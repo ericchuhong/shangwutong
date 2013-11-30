@@ -29,6 +29,8 @@
         self.goodsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         self.goodsTableView.dataSource = self;
         self.goodsTableView.delegate = self;
+        self.goodsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
         [self addSubview:self.goodsTableView];
     }
     return self;

@@ -27,6 +27,7 @@
         self.policyTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         self.policyTableView.dataSource = self;
         self.policyTableView.delegate = self;
+        self.policyTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self addSubview:self.policyTableView];
     }
     return self;

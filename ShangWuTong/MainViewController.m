@@ -89,15 +89,15 @@
     _selectView.image = [UIImage imageNamed:@"select"];
     [_tabbarView addSubview:_selectView];
     
-//    NSArray *background = @[@"TabBar_Home.png",@"TabBar_Policy.png",@"TabBar_Phone.png",@"TabBar_More.png"];
-    NSArray *background = @[@"Home",@"Policy",@"Phone",@"More"];
+    NSArray *background = @[@"TabBar_Home.png",@"TabBar_Policy.png",@"TabBar_Phone.png",@"More.png"];
+//    NSArray *background = @[@"Home",@"Policy",@"Phone",@"More"];
     
     for (int i = 0; i < background.count; i++) {
         NSString *backgroundImage = background[i];
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake((80-30)/2.0+80*i, (49-30)/2, 30, 30);
-//        btn.frame = CGRectMake((106-32)/2+106*i, (49-30)/2, 30, 30);
+//        btn.frame = CGRectMake((80-30)/2.0+80*i, (49-30)/2, 30, 30);
+        btn.frame = CGRectMake((80-40)/2+80*i, (49-30)/2, 40, 30);
 
         btn.tag = i;
         
