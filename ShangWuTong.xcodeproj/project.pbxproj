@@ -25,7 +25,6 @@
 		043A2A8B1803C27A00C342E7 /* ContactsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 043A2A8A1803C27A00C342E7 /* ContactsModel.m */; };
 		0444EA1317D239D8000A3E98 /* head_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 0444EA1217D239D8000A3E98 /* head_background.png */; };
 		04911EED17DC495E00687999 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04911EEC17DC495E00687999 /* CFNetwork.framework */; };
-		04A283A018496BC100012341 /* shangwutong.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A2839E18496BC100012341 /* shangwutong.png */; };
 		04A283A118496BC100012341 /* shangwutong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A2839F18496BC100012341 /* shangwutong@2x.png */; };
 		04A283A718496BDD00012341 /* TabBar_Home.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A283A318496BDD00012341 /* TabBar_Home.png */; };
 		04A283A818496BDD00012341 /* TabBar_More.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A283A418496BDD00012341 /* TabBar_More.png */; };
@@ -33,6 +32,7 @@
 		04A283AA18496BDD00012341 /* TabBar_Policy.png in Resources */ = {isa = PBXBuildFile; fileRef = 04A283A618496BDD00012341 /* TabBar_Policy.png */; };
 		04D885B317E52D63007D4014 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D885B117E52D63007D4014 /* MoreViewController.m */; };
 		04D885B417E52D63007D4014 /* MoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04D885B217E52D63007D4014 /* MoreViewController.xib */; };
+		04DE24EE1849CD7600BA169C /* shangwutong.png in Resources */ = {isa = PBXBuildFile; fileRef = 04DE24ED1849CD7600BA169C /* shangwutong.png */; };
 		04E2F035180051E70023ED4B /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E2F019180051E70023ED4B /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		04E2F036180051E70023ED4B /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E2F01C180051E70023ED4B /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		04E2F037180051E70023ED4B /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E2F01E180051E70023ED4B /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -173,7 +173,6 @@
 		043A2A8A1803C27A00C342E7 /* ContactsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsModel.m; sourceTree = "<group>"; };
 		0444EA1217D239D8000A3E98 /* head_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head_background.png; sourceTree = "<group>"; };
 		04911EEC17DC495E00687999 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		04A2839E18496BC100012341 /* shangwutong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shangwutong.png; sourceTree = "<group>"; };
 		04A2839F18496BC100012341 /* shangwutong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shangwutong@2x.png"; sourceTree = "<group>"; };
 		04A283A318496BDD00012341 /* TabBar_Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBar_Home.png; sourceTree = "<group>"; };
 		04A283A418496BDD00012341 /* TabBar_More.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBar_More.png; sourceTree = "<group>"; };
@@ -182,6 +181,7 @@
 		04D885B017E52D63007D4014 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
 		04D885B117E52D63007D4014 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
 		04D885B217E52D63007D4014 /* MoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreViewController.xib; sourceTree = "<group>"; };
+		04DE24ED1849CD7600BA169C /* shangwutong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shangwutong.png; path = 2nd/shangwutong.png; sourceTree = "<group>"; };
 		04E2F018180051E70023ED4B /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		04E2F019180051E70023ED4B /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		04E2F01A180051E70023ED4B /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 		04E85A5A1844D83B00D3AC04 /* TabBar_Policy_30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBar_Policy_30.png; sourceTree = "<group>"; };
 		04EAA64C180991F200EBC307 /* GoodsBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsBaseTableView.h; sourceTree = "<group>"; };
 		04EAA64D180991F200EBC307 /* GoodsBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsBaseTableView.m; sourceTree = "<group>"; };
-		04ED60F217CE1B8300A51822 /* ShangWuTong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShangWuTong.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04ED60F217CE1B8300A51822 /* 商务通.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "商务通.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04ED60F617CE1B8300A51822 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		04ED60F817CE1B8300A51822 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04ED60FA17CE1B8300A51822 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -421,8 +421,8 @@
 			isa = PBXGroup;
 			children = (
 				04A283A218496BDD00012341 /* 2nd */,
-				04A2839E18496BC100012341 /* shangwutong.png */,
 				04A2839F18496BC100012341 /* shangwutong@2x.png */,
+				04DE24ED1849CD7600BA169C /* shangwutong.png */,
 				04E812081841677200364559 /* segment_bg.png */,
 				04E812091841677200364559 /* stain.png */,
 				04F1D6611833ADFC00E52793 /* call.png */,
@@ -615,7 +615,7 @@
 		04ED60F317CE1B8300A51822 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04ED60F217CE1B8300A51822 /* ShangWuTong.app */,
+				04ED60F217CE1B8300A51822 /* 商务通.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -834,7 +834,7 @@
 			);
 			name = ShangWuTong;
 			productName = ShangWuTong;
-			productReference = 04ED60F217CE1B8300A51822 /* ShangWuTong.app */;
+			productReference = 04ED60F217CE1B8300A51822 /* 商务通.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -869,6 +869,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04ED610117CE1B8300A51822 /* InfoPlist.strings in Resources */,
+				04DE24EE1849CD7600BA169C /* shangwutong.png in Resources */,
 				04ED610917CE1B8300A51822 /* Default.png in Resources */,
 				04ED610B17CE1B8300A51822 /* Default@2x.png in Resources */,
 				04ED610D17CE1B8300A51822 /* Default-568h@2x.png in Resources */,
@@ -921,7 +922,6 @@
 				04EDAF52180307C5000B252A /* ContacetsViewController.xib in Resources */,
 				04E8120A1841677200364559 /* segment_bg.png in Resources */,
 				043A2A871803BFDB00C342E7 /* ContactViewController.xib in Resources */,
-				04A283A018496BC100012341 /* shangwutong.png in Resources */,
 				04A283A918496BDD00012341 /* TabBar_Phone.png in Resources */,
 				04A283A818496BDD00012341 /* TabBar_More.png in Resources */,
 				040034AD1816BCD800DD05C1 /* PolicyDetailViewController.xib in Resources */,
@@ -1076,7 +1076,7 @@
 				GCC_PREFIX_HEADER = "ShangWuTong/ShangWuTong-Prefix.pch";
 				INFOPLIST_FILE = "ShangWuTong/ShangWuTong-Info.plist";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "商务通";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1093,7 +1093,7 @@
 				GCC_PREFIX_HEADER = "ShangWuTong/ShangWuTong-Prefix.pch";
 				INFOPLIST_FILE = "ShangWuTong/ShangWuTong-Info.plist";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "商务通";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
