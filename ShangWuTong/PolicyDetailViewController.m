@@ -22,6 +22,20 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title = @"政策详情";
+//        self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero] ;
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont boldSystemFontOfSize:20.0];
+        label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        label.textAlignment = NSTextAlignmentCenter;
+        // ^-Use UITextAlignmentCenter for older SDKs.
+        label.textColor = [UIColor whiteColor]; // change this color
+        self.navigationItem.titleView = label;
+        label.text = NSLocalizedString(@"政策详情", @"");
+        [label sizeToFit];
+
+
     }
     return self;
 }
@@ -38,7 +52,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    self.navigationItem.backBarButtonItem.title = @"政策";
+
 
 //    self.backgroundImageView.frame = CGRectMake(0, 64, 320, 200);
 //    self.policyLableDetail.frame = CGRectMake(0,150,320,50);

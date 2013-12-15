@@ -16,7 +16,7 @@
 #define kLivingGoodsTag 103
 #define kMovingGoodsTag 104
 
-#define POLICY_HOST @"http://124.160.73.170/ecommerce/webService/apiPolicys?groupId=1&type=total"
+#define POLICY_HOST @"http://122.224.235.74/ecommerce/webService/apiPolicys?groupId=1&type=total"
 
 
 @interface PolicyViewController ()
@@ -39,6 +39,16 @@
     if (self) {
 //        self.title = @"政策";
 //        categoryArray = @[@"全部",@"吃",@"住",@"行"];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero] ;
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont boldSystemFontOfSize:20.0];
+        label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        label.textAlignment = NSTextAlignmentCenter;
+        // ^-Use UITextAlignmentCenter for older SDKs.
+        label.textColor = [UIColor whiteColor]; // change this color
+        self.navigationItem.titleView = label;
+        label.text = NSLocalizedString(@"招商政策", @"");
+        [label sizeToFit];
         
     }
     return self;
@@ -83,7 +93,7 @@
 {
     [super viewDidLoad];
 
-    self.navigationItem.title = @"政策";
+//    self.navigationItem.title = @"政策";
 
 //    CGRect frame = [[UIScreen mainScreen] applicationFrame];
 //    

@@ -23,6 +23,18 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title = @"优惠详情";
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero] ;
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont boldSystemFontOfSize:20.0];
+        label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        label.textAlignment = NSTextAlignmentCenter;
+        // ^-Use UITextAlignmentCenter for older SDKs.
+        label.textColor = [UIColor whiteColor]; // change this color
+        self.navigationItem.titleView = label;
+        label.text = NSLocalizedString(@"优惠详情", @"");
+        [label sizeToFit];
+
     }
     return self;
 }
@@ -41,7 +53,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+
+    
     //公司名称
+    
     self.companyName.text = [NSString stringWithFormat:@"%@",[self.dictForDiscData objectForKey:@"companyName"]];
     
     //初始化

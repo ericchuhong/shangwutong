@@ -11,8 +11,8 @@
 #import "ContacetsViewController.h"
 #import "ContacetsViewController.h"
 
-#define GROUP_HOST @"http://124.160.73.170/ecommerce/webService/apiGroupNumLogin?groupId=1&phone=%@&password=%@"
-#define CONTACTS_HOST @"http://124.160.73.170/ecommerce/webService/apiGroupNums?phone=%@&groupId=1&groupNumKey=%@"
+#define GROUP_HOST @"http://122.224.235.74/ecommerce/webService/apiGroupNumLogin?groupId=1&phone=%@&password=%@"
+#define CONTACTS_HOST @"http://122.224.235.74/ecommerce/webService/apiGroupNums?phone=%@&groupId=1&groupNumKey=%@"
 
 
 @implementation ContactViewController
@@ -33,7 +33,19 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.NumberTextField.delegate = self;
     self.PassWordTextField.delegate = self;
+    self.title = @"企讯通";
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero] ;
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:20.0];
+    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.textAlignment = NSTextAlignmentCenter;
+    // ^-Use UITextAlignmentCenter for older SDKs.
+    label.textColor = [UIColor whiteColor]; // change this color
+    self.navigationItem.titleView = label;
+    label.text = NSLocalizedString(@"企讯通", @"");
+    [label sizeToFit];
     
+
     [self.passwdSwitch addTarget:self action:@selector(passwdSwitchPressed) forControlEvents:UIControlEventValueChanged];
     BOOL switchStatus = [ContactsModel isSavePassword];
     [self.passwdSwitch setOn:switchStatus];

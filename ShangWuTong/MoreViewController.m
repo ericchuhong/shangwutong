@@ -19,7 +19,17 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"更多";
+        self.title = @"关于我们";
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero] ;
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont boldSystemFontOfSize:20.0];
+        label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        label.textAlignment = NSTextAlignmentCenter;
+        // ^-Use UITextAlignmentCenter for older SDKs.
+        label.textColor = [UIColor whiteColor]; // change this color
+        self.navigationItem.titleView = label;
+        label.text = NSLocalizedString(@"关于我们", @"");
+        [label sizeToFit];
     }
     return self;
 }
@@ -32,7 +42,7 @@
 //    CGRect frame = [[UIScreen mainScreen] applicationFrame];
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
-    scrollView.backgroundColor = [UIColor lightGrayColor];
+    scrollView.backgroundColor = [UIColor whiteColor];
     scrollView.indicatorStyle = UIScrollViewIndicatorStyleBlack;
     scrollView.showsHorizontalScrollIndicator = NO;
 

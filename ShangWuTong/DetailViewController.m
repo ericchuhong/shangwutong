@@ -17,7 +17,7 @@
 #define kLivingGoodsTag 103
 #define kMovingGoodsTag 104
 
-#define SERVER_HOST @"http://124.160.73.170/ecommerce/webService/apiDiscounts?userNick=%@&groupId=1&userKey=%@&type=%@"
+#define SERVER_HOST @"http://122.224.235.74/ecommerce/webService/apiDiscounts?userNick=%@&groupId=1&userKey=%@&type=%@"
 
 @interface DetailViewController ()
 
@@ -45,6 +45,16 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"商务通";
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero] ;
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont boldSystemFontOfSize:20.0];
+        label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+        label.textAlignment = NSTextAlignmentCenter;
+        // ^-Use UITextAlignmentCenter for older SDKs.
+        label.textColor = [UIColor whiteColor]; // change this color
+        self.navigationItem.titleView = label;
+        label.text = NSLocalizedString(@"商务通", @"");
+        [label sizeToFit];
 //        categoryArray = @[@"全部",@"吃",@"住",@"行"];
     }
     return self;

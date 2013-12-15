@@ -12,8 +12,8 @@
 #import "iToast.h"
 
 
-#define CONTACTS_HOST @"http://124.160.73.170/ecommerce/webService/apiGroupNums?phone=%@&groupId=1&groupNumKey=%@"
-#define CONTACTSSEARCH_HOST @"http://124.160.73.170/ecommerce/webService/apiGroupNumSearch?phone=%@&groupId=1&groupNumKey=%@==&searchText=%@"
+#define CONTACTS_HOST @"http://122.224.235.74/ecommerce/webService/apiGroupNums?phone=%@&groupId=1&groupNumKey=%@"
+#define CONTACTSSEARCH_HOST @"http://122.224.235.74/ecommerce/webService/apiGroupNumSearch?phone=%@&groupId=1&groupNumKey=%@==&searchText=%@"
 
 @interface ContacetsViewController ()
 
@@ -28,6 +28,10 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+//        self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+//        self.navigationController.title = @"企讯通";
+        
+
     }
     return self;
 }
